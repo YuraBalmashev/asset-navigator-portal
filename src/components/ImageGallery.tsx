@@ -28,8 +28,8 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
 
   return (
     <>
-      <div className="relative rounded-lg overflow-hidden">
-        <div className="relative aspect-[16/9]">
+      <div className="relative rounded-lg overflow-hidden shadow-md">
+        <div className="relative aspect-[16/9] animate-scale-in">
           <img
             src={images[currentIndex]}
             alt={`Gallery image ${currentIndex + 1}`}
@@ -63,7 +63,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
             <button
               key={index}
               className={`w-24 h-16 flex-shrink-0 rounded-md overflow-hidden border-2 transition-all ${
-                index === currentIndex ? "border-[#9b87f5]" : "border-transparent"
+                index === currentIndex ? "border-sber-500 shadow-md" : "border-transparent hover:border-sber-300"
               }`}
               onClick={() => handleThumbnailClick(index)}
             >
@@ -79,7 +79,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
       
       {/* Fullscreen modal */}
       {fullscreen && (
-        <div className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center">
+        <div className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center animate-fade-in">
           <div className="absolute top-4 right-4 z-10">
             <button
               className="bg-black/40 text-white p-2 rounded-full hover:bg-black/60 transition-colors"
@@ -115,7 +115,7 @@ const ImageGallery = ({ images }: ImageGalleryProps) => {
               <button
                 key={index}
                 className={`w-16 h-12 flex-shrink-0 rounded-md overflow-hidden border-2 transition-all ${
-                  index === currentIndex ? "border-white" : "border-transparent"
+                  index === currentIndex ? "border-sber-500" : "border-transparent hover:border-gray-300"
                 }`}
                 onClick={() => handleThumbnailClick(index)}
               >

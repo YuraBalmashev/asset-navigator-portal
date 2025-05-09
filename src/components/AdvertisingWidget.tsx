@@ -74,14 +74,14 @@ const AdvertisingWidget = ({ className }: AdvertisingWidgetProps) => {
             >
               <button
                 onClick={prevAd}
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 text-green-600 p-1 rounded-full hover:bg-white transition-colors"
+                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 text-sber-600 p-1 rounded-full hover:bg-white transition-colors"
                 aria-label="Previous ad"
               >
                 <ChevronLeft size={20} />
               </button>
               <button
                 onClick={nextAd}
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 text-green-600 p-1 rounded-full hover:bg-white transition-colors"
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 text-sber-600 p-1 rounded-full hover:bg-white transition-colors"
                 aria-label="Next ad"
               >
                 <ChevronRight size={20} />
@@ -95,7 +95,7 @@ const AdvertisingWidget = ({ className }: AdvertisingWidgetProps) => {
               <div className="flex items-center justify-between">
                 <Button 
                   asChild 
-                  className="bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 text-white"
+                  className="bg-gradient-to-r from-sber-400 to-sber-600 hover:from-sber-500 hover:to-sber-700 text-white shadow-md hover:shadow-lg transition-all"
                 >
                   <a href={currentAd.ctaLink} className="inline-flex items-center">
                     {currentAd.ctaText} <ExternalLink size={16} className="ml-2" />
@@ -108,7 +108,7 @@ const AdvertisingWidget = ({ className }: AdvertisingWidgetProps) => {
                       key={index}
                       onClick={() => setCurrentAdIndex(index)}
                       className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                        currentAdIndex === index ? "bg-green-500" : "bg-gray-300"
+                        currentAdIndex === index ? "bg-sber-500" : "bg-gray-300"
                       }`}
                       aria-label={`Go to ad ${index + 1}`}
                     />

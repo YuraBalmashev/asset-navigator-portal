@@ -12,7 +12,7 @@ interface PromoBannerProps {
   imageUrl: string;
   colorGradient?: string;
   variant?: "primary" | "secondary";
-  className?: string; // Added className prop
+  className?: string;
 }
 
 const PromoBanner = ({
@@ -24,10 +24,10 @@ const PromoBanner = ({
   imageUrl,
   colorGradient = "linear-gradient(102.3deg, rgba(42,157,80,0.9) 0%, rgba(72,199,116,0.8) 100%)",
   variant = "primary",
-  className = "", // Default to empty string
+  className = "",
 }: PromoBannerProps) => {
   return (
-    <Card className={`overflow-hidden rounded-lg ${className}`}>
+    <Card className={`overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 ${className}`}>
       <div 
         className="relative p-8 md:p-12 flex flex-col md:flex-row items-center justify-between"
         style={{
@@ -37,19 +37,19 @@ const PromoBanner = ({
         }}
       >
         <div className="z-10 md:w-2/3 text-white">
-          <h3 className="text-xl md:text-2xl font-medium mb-1">{subtitle}</h3>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">{title}</h2>
+          <h3 className="text-xl md:text-2xl font-medium mb-1 animate-fade-in">{subtitle}</h3>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-fade-in">{title}</h2>
           {description && (
-            <p className="mb-6 max-w-lg">{description}</p>
+            <p className="mb-6 max-w-lg animate-fade-in">{description}</p>
           )}
           <Button 
             asChild 
             variant={variant === "primary" ? "default" : "secondary"}
-            className={
+            className={`animate-scale-in ${
               variant === "primary" 
-                ? "bg-white text-green-600 hover:bg-gray-100" 
-                : "bg-gradient-to-r from-green-400 to-green-600 text-white hover:from-green-500 hover:to-green-700"
-            }
+                ? "bg-white text-sber-600 hover:bg-gray-100 hover:text-sber-700 transition-colors" 
+                : "bg-gradient-to-r from-sber-400 to-sber-600 text-white hover:from-sber-500 hover:to-sber-700 shadow-md hover:shadow-lg"
+            }`}
           >
             <Link to={buttonLink}>{buttonText}</Link>
           </Button>

@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -148,11 +147,11 @@ const PropertyDetail = () => {
             <div className="mb-6">
               <h1 className="text-3xl font-bold mb-2">{property.title}</h1>
               <div className="flex items-center text-gray-600 mb-4">
-                <MapPin size={16} className="mr-1" />
+                <MapPin size={16} className="mr-1 text-sber-500" />
                 <span>{property.location}</span>
               </div>
               <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-semibold text-[#9b87f5]">
+                <h2 className="text-2xl font-semibold bg-gradient-to-r from-sber-500 to-sber-600 inline-block text-transparent bg-clip-text">
                   ${property.price.toLocaleString()}
                 </h2>
                 <div className="flex gap-2">
@@ -160,15 +159,15 @@ const PropertyDetail = () => {
                     variant="outline" 
                     size="icon" 
                     onClick={() => toggleFavorite(property.id)}
-                    className={isFavorite ? "bg-[#9b87f5]/10" : ""}
+                    className={isFavorite ? "bg-sber-100 border-sber-500" : "hover:border-sber-500"}
                   >
                     <Heart 
                       size={20} 
-                      className={isFavorite ? "fill-[#9b87f5] text-[#9b87f5]" : "text-gray-600"} 
+                      className={isFavorite ? "fill-sber-500 text-sber-500" : "text-gray-600 hover:text-sber-500"} 
                     />
                   </Button>
-                  <Button variant="outline" size="icon">
-                    <Share size={20} className="text-gray-600" />
+                  <Button variant="outline" size="icon" className="hover:border-sber-500">
+                    <Share size={20} className="text-gray-600 hover:text-sber-500" />
                   </Button>
                 </div>
               </div>
@@ -179,9 +178,9 @@ const PropertyDetail = () => {
             <div className="mt-8">
               <Tabs defaultValue="details" value={activeTab} onValueChange={setActiveTab}>
                 <TabsList className="mb-6">
-                  <TabsTrigger value="details">Details</TabsTrigger>
-                  <TabsTrigger value="features">Features</TabsTrigger>
-                  <TabsTrigger value="map">Map</TabsTrigger>
+                  <TabsTrigger value="details" className={activeTab === "details" ? "bg-sber-500 text-white" : ""}>Details</TabsTrigger>
+                  <TabsTrigger value="features" className={activeTab === "features" ? "bg-sber-500 text-white" : ""}>Features</TabsTrigger>
+                  <TabsTrigger value="map" className={activeTab === "map" ? "bg-sber-500 text-white" : ""}>Map</TabsTrigger>
                 </TabsList>
                 
                 <TabsContent value="details" className="space-y-6">
@@ -216,9 +215,9 @@ const PropertyDetail = () => {
                       {property.features.map((feature, index) => (
                         <div 
                           key={index} 
-                          className="flex items-center p-3 bg-gray-50 rounded-md"
+                          className="flex items-center p-3 bg-gray-50 rounded-md hover:bg-sber-50 transition-colors"
                         >
-                          <div className="text-[#9b87f5] mr-2">
+                          <div className="text-sber-500 mr-2">
                             <Home size={18} />
                           </div>
                           <span>{feature}</span>
@@ -234,7 +233,7 @@ const PropertyDetail = () => {
                     {/* In a real app, this would be replaced with an actual map integration */}
                     <div className="h-80 bg-gray-200 rounded-lg flex items-center justify-center">
                       <div className="text-center text-gray-500">
-                        <MapPin size={48} className="mx-auto mb-2" />
+                        <MapPin size={48} className="mx-auto mb-2 text-sber-500" />
                         <p className="font-medium">Map View</p>
                         <p>Property is located at coordinates:</p>
                         <p>Lat: {property.mapCoordinates.lat}, Lng: {property.mapCoordinates.lng}</p>
@@ -270,35 +269,39 @@ const PropertyDetail = () => {
                 </div>
                 
                 <div className="space-y-3">
-                  <Button className="w-full bg-[#9b87f5] hover:bg-[#7E69AB] gap-2">
+                  <Button className="w-full bg-gradient-to-r from-sber-400 to-sber-600 hover:from-sber-500 hover:to-sber-700 text-white gap-2 shadow-md hover:shadow-lg transition-all">
                     <Phone size={16} /> Call Seller
                   </Button>
-                  <Button variant="outline" className="w-full gap-2">
+                  <Button variant="outline" className="w-full gap-2 border-sber-500 text-sber-600 hover:bg-sber-50">
                     <Mail size={16} /> Email Seller
                   </Button>
                 </div>
                 
                 <div className="mt-8 space-y-3 text-sm text-gray-600">
                   <div className="flex items-center">
-                    <Calendar size={16} className="mr-2" />
+                    <Calendar size={16} className="mr-2 text-sber-500" />
                     <span>Listed on {new Date(property.createdAt).toLocaleDateString()}</span>
                   </div>
                   <div className="flex items-center">
-                    <Clock size={16} className="mr-2" />
+                    <Clock size={16} className="mr-2 text-sber-500" />
                     <span>Last updated 2 days ago</span>
                   </div>
                   <div className="flex items-center">
-                    <Eye size={16} className="mr-2" />
+                    <Eye size={16} className="mr-2 text-sber-500" />
                     <span>Viewed {property.viewedCount} times</span>
                   </div>
                 </div>
                 
-                <div className="mt-8 p-4 bg-gray-50 rounded-lg">
+                <div className="mt-8 p-4 bg-sber-50 rounded-lg">
                   <h4 className="font-semibold mb-2">Financing Options Available</h4>
                   <p className="text-sm text-gray-600 mb-3">
                     Get pre-approved for a mortgage with Sberbank's special rates.
                   </p>
-                  <Button variant="outline" size="sm" className="w-full text-[#9b87f5] border-[#9b87f5]">
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="w-full text-sber-600 border-sber-500 hover:bg-sber-100"
+                  >
                     Calculate Mortgage
                   </Button>
                 </div>

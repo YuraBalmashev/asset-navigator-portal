@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface AdvertisingWidgetProps {
@@ -63,15 +63,30 @@ const AdvertisingWidget = ({ className }: AdvertisingWidgetProps) => {
       </div>
       
       <Card 
-        className="overflow-hidden rounded-lg shadow-md"
+        className="overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-lg"
         style={{ backgroundColor: currentAd.backgroundColor }}
       >
         <CardContent className="p-0">
           <div className="flex flex-col md:flex-row">
             <div 
-              className="w-full md:w-1/2 h-48 md:h-auto bg-center bg-cover"
+              className="w-full md:w-1/2 h-48 md:h-auto bg-center bg-cover relative"
               style={{ backgroundImage: `url(${currentAd.imageUrl})` }}
-            ></div>
+            >
+              <button
+                onClick={prevAd}
+                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 text-green-600 p-1 rounded-full hover:bg-white transition-colors"
+                aria-label="Previous ad"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button
+                onClick={nextAd}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 text-green-600 p-1 rounded-full hover:bg-white transition-colors"
+                aria-label="Next ad"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
             <div className="w-full md:w-1/2 p-6 flex flex-col justify-between" style={{ color: currentAd.textColor }}>
               <div>
                 <h3 className="text-xl font-semibold mb-2">{currentAd.title}</h3>

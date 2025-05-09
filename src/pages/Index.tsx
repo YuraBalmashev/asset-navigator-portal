@@ -13,21 +13,21 @@ const Index = () => {
     {
       title: "Properties",
       description: "Apartments, houses, and commercial spaces",
-      icon: <Home size={20} />,
+      icon: <Home size={24} />,
       imageUrl: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
       link: "/properties",
     },
     {
       title: "Vehicles",
       description: "Cars, trucks, and special purpose vehicles",
-      icon: <Car size={20} />,
+      icon: <Car size={24} />,
       imageUrl: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
       link: "/vehicles",
     },
     {
       title: "Businesses",
       description: "Ready-made businesses and commercial opportunities",
-      icon: <Briefcase size={20} />,
+      icon: <Briefcase size={24} />,
       imageUrl: "https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
       link: "/businesses",
     },
@@ -46,6 +46,16 @@ const Index = () => {
           
           <SearchBar 
             placeholder="What are you looking for? E.g., 'Apartment in Moscow with 2 bedrooms'"
+            className="mb-8"
+          />
+
+          <PromoBanner
+            title="Find Your Dream Property"
+            subtitle="NEW FEATURE"
+            description="Use our AI-powered search to find properties matching your exact requirements."
+            buttonText="Try Smart Search"
+            buttonLink="/smart-search"
+            imageUrl="https://images.unsplash.com/photo-1560520031-3a4dc4e9de0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
             className="mb-12"
           />
 
@@ -67,15 +77,6 @@ const Index = () => {
       <div className="container mx-auto px-4 py-12">
         {/* Integrated Advertising Widget */}
         <AdvertisingWidget className="mb-12" />
-        
-        <PromoBanner
-          title="Find Your Dream Property"
-          subtitle="NEW FEATURE"
-          description="Use our AI-powered search to find properties matching your exact requirements."
-          buttonText="Try Smart Search"
-          buttonLink="/smart-search"
-          imageUrl="https://images.unsplash.com/photo-1560520031-3a4dc4e9de0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-        />
         
         <FeaturedAssets />
         

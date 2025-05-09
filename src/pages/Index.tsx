@@ -6,6 +6,7 @@ import CategoryCard from "@/components/CategoryCard";
 import FeaturedAssets from "@/components/FeaturedAssets";
 import Recommendations from "@/components/Recommendations";
 import PromoBanner from "@/components/PromoBanner";
+import AdvertisingWidget from "@/components/AdvertisingWidget";
 
 const Index = () => {
   const categories = [
@@ -64,6 +65,9 @@ const Index = () => {
       </div>
       
       <div className="container mx-auto px-4 py-12">
+        {/* Integrated Advertising Widget */}
+        <AdvertisingWidget className="mb-12" />
+        
         <PromoBanner
           title="Find Your Dream Property"
           subtitle="NEW FEATURE"

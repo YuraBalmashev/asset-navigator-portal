@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Heart, Share, Phone, Mail, MapPin, Calendar, Home, Clock } from "lucide-react";
+import { Heart, Share, Phone, Mail, MapPin, Calendar, Home, Clock, Eye } from "lucide-react";
 import MainLayout from "@/components/layouts/MainLayout";
 import ImageGallery from "@/components/ImageGallery";
 import AssetCard from "@/components/AssetCard";

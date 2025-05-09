@@ -1,5 +1,5 @@
 
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "@/components/ui/sonner";
 import { NavigationMenu } from "../ui/navigation-menu";
 import Footer from "../Footer";
 import Header from "../Header";

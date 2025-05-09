@@ -35,7 +35,7 @@ const Index = () => {
 
   return (
     <MainLayout>
-      <div className="bg-gradient-to-b from-[#F1F0FB] to-white py-16">
+      <div className="bg-gradient-to-b from-[#F1FAF1] to-white py-16">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">
             Find Your Perfect Asset
@@ -88,7 +88,7 @@ const Index = () => {
           buttonText="Learn More"
           buttonLink="/financing"
           imageUrl="https://images.unsplash.com/photo-1532581140115-3e355d1ed1de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-          colorGradient="linear-gradient(90deg, rgba(26,31,44,0.85) 0%, rgba(26,31,44,0.7) 100%)"
+          colorGradient="linear-gradient(90deg, rgba(42,157,80,0.85) 0%, rgba(72,199,116,0.7) 100%)"
           variant="secondary"
         />
       </div>

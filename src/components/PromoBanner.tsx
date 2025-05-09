@@ -21,11 +21,11 @@ const PromoBanner = ({
   buttonText,
   buttonLink,
   imageUrl,
-  colorGradient = "linear-gradient(102.3deg, rgba(147,39,143,0.8) 0%, rgba(234,172,232,0.8) 100%)",
+  colorGradient = "linear-gradient(102.3deg, rgba(42,157,80,0.9) 0%, rgba(72,199,116,0.8) 100%)",
   variant = "primary",
 }: PromoBannerProps) => {
   return (
-    <Card className="overflow-hidden">
+    <Card className="overflow-hidden rounded-lg">
       <div 
         className="relative p-8 md:p-12 flex flex-col md:flex-row items-center justify-between"
         style={{
@@ -45,8 +45,8 @@ const PromoBanner = ({
             variant={variant === "primary" ? "default" : "secondary"}
             className={
               variant === "primary" 
-                ? "bg-white text-[#9b87f5] hover:bg-gray-100" 
-                : "bg-[#9b87f5] text-white hover:bg-[#7E69AB]"
+                ? "bg-white text-green-600 hover:bg-gray-100" 
+                : "bg-gradient-to-r from-green-400 to-green-600 text-white hover:from-green-500 hover:to-green-700"
             }
           >
             <Link to={buttonLink}>{buttonText}</Link>

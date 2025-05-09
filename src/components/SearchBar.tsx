@@ -11,7 +11,7 @@ interface SearchBarProps {
 }
 
 const SearchBar = ({ 
-  placeholder = "Search for properties, vehicles, businesses...", 
+  placeholder = "What are you looking for? E.g., 'Apartment in Moscow with 2 bedrooms'", 
   onSearch,
   className = ""
 }: SearchBarProps) => {
@@ -36,13 +36,13 @@ const SearchBar = ({
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="pl-10 pr-24 py-6 h-14 w-full text-base rounded-lg border-gray-200 focus:border-[#9b87f5]"
+          className="pl-10 pr-24 py-6 h-14 w-full text-base rounded-lg border-gray-200 shadow-sm focus:border-green-500 focus:ring-1 focus:ring-green-500"
           placeholder={placeholder}
         />
       </div>
       <Button 
         type="submit"
-        className="absolute right-1 top-1/2 transform -translate-y-1/2 bg-[#9b87f5] hover:bg-[#7E69AB] text-white h-10"
+        className="absolute right-1 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 text-white h-10"
       >
         Search
       </Button>

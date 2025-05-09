@@ -19,7 +19,7 @@ const AdvertisingWidget = ({ className }: AdvertisingWidgetProps) => {
       imageUrl: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
       ctaText: "Apply Now",
       ctaLink: "/financing",
-      backgroundColor: "#F1F0FB",
+      backgroundColor: "#F0F9F0",
       textColor: "#333",
     },
     {
@@ -29,7 +29,7 @@ const AdvertisingWidget = ({ className }: AdvertisingWidgetProps) => {
       imageUrl: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
       ctaText: "Learn More",
       ctaLink: "/corporate",
-      backgroundColor: "#E5DEFF",
+      backgroundColor: "#E6F4E6",
       textColor: "#333",
     },
     {
@@ -39,7 +39,7 @@ const AdvertisingWidget = ({ className }: AdvertisingWidgetProps) => {
       imageUrl: "https://images.unsplash.com/photo-1532581140115-3e355d1ed1de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
       ctaText: "Browse Collection",
       ctaLink: "/premium-vehicles",
-      backgroundColor: "#FDE1D3",
+      backgroundColor: "#DFF2DF",
       textColor: "#333",
     },
   ];
@@ -63,7 +63,7 @@ const AdvertisingWidget = ({ className }: AdvertisingWidgetProps) => {
       </div>
       
       <Card 
-        className="overflow-hidden"
+        className="overflow-hidden rounded-lg shadow-md"
         style={{ backgroundColor: currentAd.backgroundColor }}
       >
         <CardContent className="p-0">
@@ -80,7 +80,7 @@ const AdvertisingWidget = ({ className }: AdvertisingWidgetProps) => {
               <div className="flex items-center justify-between">
                 <Button 
                   asChild 
-                  className="bg-[#9b87f5] hover:bg-[#7E69AB] text-white"
+                  className="bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 text-white"
                 >
                   <a href={currentAd.ctaLink} className="inline-flex items-center">
                     {currentAd.ctaText} <ExternalLink size={16} className="ml-2" />
@@ -93,7 +93,7 @@ const AdvertisingWidget = ({ className }: AdvertisingWidgetProps) => {
                       key={index}
                       onClick={() => setCurrentAdIndex(index)}
                       className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                        currentAdIndex === index ? "bg-[#9b87f5]" : "bg-gray-300"
+                        currentAdIndex === index ? "bg-green-500" : "bg-gray-300"
                       }`}
                       aria-label={`Go to ad ${index + 1}`}
                     />

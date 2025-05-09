@@ -12,6 +12,7 @@ interface PromoBannerProps {
   imageUrl: string;
   colorGradient?: string;
   variant?: "primary" | "secondary";
+  className?: string; // Added className prop
 }
 
 const PromoBanner = ({
@@ -23,9 +24,10 @@ const PromoBanner = ({
   imageUrl,
   colorGradient = "linear-gradient(102.3deg, rgba(42,157,80,0.9) 0%, rgba(72,199,116,0.8) 100%)",
   variant = "primary",
+  className = "", // Default to empty string
 }: PromoBannerProps) => {
   return (
-    <Card className="overflow-hidden rounded-lg">
+    <Card className={`overflow-hidden rounded-lg ${className}`}>
       <div 
         className="relative p-8 md:p-12 flex flex-col md:flex-row items-center justify-between"
         style={{

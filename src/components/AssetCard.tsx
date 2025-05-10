@@ -1,8 +1,7 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
-import { Heart } from "lucide-react";
+import { Heart, MapPin } from "lucide-react";
 
 interface AssetCardProps {
   id: string;

@@ -1,0 +1,88 @@
+
+{
+  "nav": {
+    "properties": "Properties",
+    "vehicles": "Vehicles",
+    "businesses": "Businesses",
+    "favorites": "Favorites",
+    "notifications": "Notifications",
+    "dashboard": "My Account"
+  },
+  "search": {
+    "placeholder": "Search for properties, vehicles, businesses...",
+    "mobile": {
+      "placeholder": "Search..."
+    }
+  },
+  "home": {
+    "title": "Find Your Perfect Asset",
+    "subtitle": "Browse through a wide selection of properties, vehicles, and ready-made businesses from Sberbank's marketplace.",
+    "search": {
+      "placeholder": "What are you looking for? E.g., 'Apartment in Moscow with 2 bedrooms'",
+      "button": "Search"
+    }
+  },
+  "category": {
+    "properties": {
+      "title": "Properties",
+      "description": "Apartments, houses, and commercial spaces"
+    },
+    "vehicles": {
+      "title": "Vehicles",
+      "description": "Cars, trucks, and special purpose vehicles"
+    },
+    "businesses": {
+      "title": "Businesses",
+      "description": "Ready-made businesses and commercial opportunities"
+    }
+  },
+  "promo": {
+    "property": {
+      "title": "Find Your Dream Property",
+      "subtitle": "NEW FEATURE",
+      "description": "Use our AI-powered search to find properties matching your exact requirements.",
+      "button": "Try Smart Search"
+    },
+    "financing": {
+      "title": "Vehicle Financing Available",
+      "subtitle": "SPECIAL OFFER",
+      "description": "Get pre-approved for financing on any vehicle with rates starting at just 4.9%.",
+      "button": "Learn More"
+    }
+  },
+  "property": {
+    "details": "Details",
+    "features": "Features",
+    "map": "Map",
+    "description": "Description",
+    "specifications": "Specifications",
+    "features_title": "Property Features",
+    "location": "Location",
+    "similar": "Similar Properties",
+    "seller": {
+      "info": "Seller Information",
+      "call": "Call Seller",
+      "email": "Email Seller"
+    },
+    "financing": "Financing Options Available",
+    "financing_description": "Get pre-approved for a mortgage with Sberbank's special rates.",
+    "financing_calculate": "Calculate Mortgage",
+    "listed": "Listed on",
+    "updated": "Last updated",
+    "viewed": "Viewed",
+    "times": "times",
+    "days_ago": "days ago",
+    "spec": {
+      "area": "Area",
+      "rooms": "Rooms",
+      "bathrooms": "Bathrooms",
+      "floor": "Floor",
+      "built": "Built",
+      "condition": "Condition",
+      "parking": "Parking",
+      "heating": "Heating",
+      "balcony": "Balcony",
+      "elevator": "Elevator"
+    }
+  }
+}

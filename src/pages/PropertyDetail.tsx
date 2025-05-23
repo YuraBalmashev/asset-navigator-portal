@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -219,7 +218,7 @@ const PropertyDetail = () => {
                 
                 <TabsContent value="features" className="space-y-6">
                   <div>
-                    <h3 className="text-xl font-semibold mb-4">{t('property.features.title')}</h3>
+                    <h3 className="text-xl font-semibold mb-4">{t('property.features_title')}</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                       {property.features.map((feature, index) => (
                         <div 
@@ -293,7 +292,7 @@ const PropertyDetail = () => {
                   </div>
                   <div className="flex items-center">
                     <Clock size={16} className="mr-2 text-sber-500" />
-                    <span>{t('property.updated')} 2 {t('property.days.ago')}</span>
+                    <span>{t('property.updated')} 2 {t('property.days_ago')}</span>
                   </div>
                   <div className="flex items-center">
                     <Eye size={16} className="mr-2 text-sber-500" />
@@ -304,14 +303,14 @@ const PropertyDetail = () => {
                 <div className="mt-8 p-4 bg-sber-50 rounded-lg">
                   <h4 className="font-semibold mb-2">{t('property.financing')}</h4>
                   <p className="text-sm text-gray-600 mb-3">
-                    {t('property.financing.description')}
+                    {t('property.financing_description')}
                   </p>
                   <Button 
                     variant="outline" 
                     size="sm" 
                     className="w-full text-sber-600 border-sber-500 hover:bg-sber-100"
                   >
-                    {t('property.financing.calculate')}
+                    {t('property.financing_calculate')}
                   </Button>
                 </div>
               </CardContent>

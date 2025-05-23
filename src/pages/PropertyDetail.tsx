@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -156,7 +155,7 @@ const PropertyDetail = () => {
               </div>
               <div className="flex items-center justify-between">
                 <h2 className="text-2xl font-semibold bg-gradient-to-r from-sber-500 to-sber-600 inline-block text-transparent bg-clip-text">
-                  ${property.price.toLocaleString()}
+                  {property.price.toLocaleString('ru-RU')} $
                 </h2>
                 <div className="flex gap-2">
                   <Button 
@@ -305,7 +304,7 @@ const PropertyDetail = () => {
                 <div className="mt-8 p-4 bg-sber-50 rounded-lg">
                   <div className="mb-3">
                     <h2 className="text-2xl font-semibold bg-gradient-to-r from-sber-500 to-sber-600 inline-block text-transparent bg-clip-text">
-                      ${property.preApprovedMortgage.toLocaleString()}
+                      Кредитный потенциал: 31 894 280 ₽
                     </h2>
                   </div>
                   <p className="text-sm text-gray-600 mb-3">

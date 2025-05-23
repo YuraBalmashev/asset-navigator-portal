@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -7,6 +8,7 @@ import { Heart, Share, Phone, Mail, MapPin, Calendar, Home, Clock, Eye } from "l
 import MainLayout from "@/components/layouts/MainLayout";
 import ImageGallery from "@/components/ImageGallery";
 import AssetCard from "@/components/AssetCard";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 // This would come from an API in a real application
 const mockPropertyDetails = {
@@ -115,6 +117,7 @@ const PropertyDetail = () => {
   const [isFavorite, setIsFavorite] = useState(false);
   const [activeTab, setActiveTab] = useState("details");
   const property = mockPropertyDetails; // In a real app, we would fetch this based on the ID
+  const { t } = useLanguage();
   
   const [favorites, setFavorites] = useState<Record<string, boolean>>({
     sim3: true,
@@ -178,39 +181,45 @@ const PropertyDetail = () => {
             <div className="mt-8">
               <Tabs defaultValue="details" value={activeTab} onValueChange={setActiveTab}>
                 <TabsList className="mb-6">
-                  <TabsTrigger value="details" className={activeTab === "details" ? "bg-sber-500 text-white" : ""}>Details</TabsTrigger>
-                  <TabsTrigger value="features" className={activeTab === "features" ? "bg-sber-500 text-white" : ""}>Features</TabsTrigger>
-                  <TabsTrigger value="map" className={activeTab === "map" ? "bg-sber-500 text-white" : ""}>Map</TabsTrigger>
+                  <TabsTrigger value="details" className={activeTab === "details" ? "bg-sber-500 text-white" : ""}>
+                    {t('property.details')}
+                  </TabsTrigger>
+                  <TabsTrigger value="features" className={activeTab === "features" ? "bg-sber-500 text-white" : ""}>
+                    {t('property.features')}
+                  </TabsTrigger>
+                  <TabsTrigger value="map" className={activeTab === "map" ? "bg-sber-500 text-white" : ""}>
+                    {t('property.map')}
+                  </TabsTrigger>
                 </TabsList>
                 
                 <TabsContent value="details" className="space-y-6">
                   <div>
-                    <h3 className="text-xl font-semibold mb-4">Description</h3>
+                    <h3 className="text-xl font-semibold mb-4">{t('property.description')}</h3>
                     <p className="text-gray-700 leading-relaxed">
                       {property.description}
                     </p>
                   </div>
                   
                   <div>
-                    <h3 className="text-xl font-semibold mb-4">Specifications</h3>
+                    <h3 className="text-xl font-semibold mb-4">{t('property.specifications')}</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8">
-                      <SpecRow label="Area" value={property.specifications.area} />
-                      <SpecRow label="Rooms" value={property.specifications.rooms} />
-                      <SpecRow label="Bathrooms" value={property.specifications.bathrooms} />
-                      <SpecRow label="Floor" value={property.specifications.floor} />
-                      <SpecRow label="Built" value={property.specifications.buildYear} />
-                      <SpecRow label="Condition" value={property.specifications.condition} />
-                      <SpecRow label="Parking" value={property.specifications.parking} />
-                      <SpecRow label="Heating" value={property.specifications.heating} />
-                      <SpecRow label="Balcony" value={property.specifications.balcony} />
-                      <SpecRow label="Elevator" value={property.specifications.elevator} />
+                      <SpecRow label={t('property.spec.area')} value={property.specifications.area} />
+                      <SpecRow label={t('property.spec.rooms')} value={property.specifications.rooms} />
+                      <SpecRow label={t('property.spec.bathrooms')} value={property.specifications.bathrooms} />
+                      <SpecRow label={t('property.spec.floor')} value={property.specifications.floor} />
+                      <SpecRow label={t('property.spec.built')} value={property.specifications.buildYear} />
+                      <SpecRow label={t('property.spec.condition')} value={property.specifications.condition} />
+                      <SpecRow label={t('property.spec.parking')} value={property.specifications.parking} />
+                      <SpecRow label={t('property.spec.heating')} value={property.specifications.heating} />
+                      <SpecRow label={t('property.spec.balcony')} value={property.specifications.balcony} />
+                      <SpecRow label={t('property.spec.elevator')} value={property.specifications.elevator} />
                     </div>
                   </div>
                 </TabsContent>
                 
                 <TabsContent value="features" className="space-y-6">
                   <div>
-                    <h3 className="text-xl font-semibold mb-4">Property Features</h3>
+                    <h3 className="text-xl font-semibold mb-4">{t('property.features.title')}</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                       {property.features.map((feature, index) => (
                         <div 
@@ -229,7 +238,7 @@ const PropertyDetail = () => {
                 
                 <TabsContent value="map" className="space-y-6">
                   <div>
-                    <h3 className="text-xl font-semibold mb-4">Location</h3>
+                    <h3 className="text-xl font-semibold mb-4">{t('property.location')}</h3>
                     {/* In a real app, this would be replaced with an actual map integration */}
                     <div className="h-80 bg-gray-200 rounded-lg flex items-center justify-center">
                       <div className="text-center text-gray-500">
@@ -245,7 +254,7 @@ const PropertyDetail = () => {
             </div>
             
             <div className="mt-12">
-              <h3 className="text-2xl font-semibold mb-6">Similar Properties</h3>
+              <h3 className="text-2xl font-semibold mb-6">{t('property.similar')}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {similarProperties.map((prop) => (
                   <AssetCard
@@ -263,46 +272,46 @@ const PropertyDetail = () => {
           <div className="lg:col-span-1">
             <Card className="sticky top-24">
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold mb-4">Seller Information</h3>
+                <h3 className="text-lg font-semibold mb-4">{t('property.seller.info')}</h3>
                 <div className="text-gray-700 mb-6">
                   <p className="font-medium">{property.sellerInfo.name}</p>
                 </div>
                 
                 <div className="space-y-3">
                   <Button className="w-full bg-gradient-to-r from-sber-400 to-sber-600 hover:from-sber-500 hover:to-sber-700 text-white gap-2 shadow-md hover:shadow-lg transition-all">
-                    <Phone size={16} /> Call Seller
+                    <Phone size={16} /> {t('property.seller.call')}
                   </Button>
                   <Button variant="outline" className="w-full gap-2 border-sber-500 text-sber-600 hover:bg-sber-50">
-                    <Mail size={16} /> Email Seller
+                    <Mail size={16} /> {t('property.seller.email')}
                   </Button>
                 </div>
                 
                 <div className="mt-8 space-y-3 text-sm text-gray-600">
                   <div className="flex items-center">
                     <Calendar size={16} className="mr-2 text-sber-500" />
-                    <span>Listed on {new Date(property.createdAt).toLocaleDateString()}</span>
+                    <span>{t('property.listed')} {new Date(property.createdAt).toLocaleDateString()}</span>
                   </div>
                   <div className="flex items-center">
                     <Clock size={16} className="mr-2 text-sber-500" />
-                    <span>Last updated 2 days ago</span>
+                    <span>{t('property.updated')} 2 {t('property.days.ago')}</span>
                   </div>
                   <div className="flex items-center">
                     <Eye size={16} className="mr-2 text-sber-500" />
-                    <span>Viewed {property.viewedCount} times</span>
+                    <span>{t('property.viewed')} {property.viewedCount} {t('property.times')}</span>
                   </div>
                 </div>
                 
                 <div className="mt-8 p-4 bg-sber-50 rounded-lg">
-                  <h4 className="font-semibold mb-2">Financing Options Available</h4>
+                  <h4 className="font-semibold mb-2">{t('property.financing')}</h4>
                   <p className="text-sm text-gray-600 mb-3">
-                    Get pre-approved for a mortgage with Sberbank's special rates.
+                    {t('property.financing.description')}
                   </p>
                   <Button 
                     variant="outline" 
                     size="sm" 
                     className="w-full text-sber-600 border-sber-500 hover:bg-sber-100"
                   >
-                    Calculate Mortgage
+                    {t('property.financing.calculate')}
                   </Button>
                 </div>
               </CardContent>

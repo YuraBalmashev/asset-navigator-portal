@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -13,22 +14,22 @@ import { useLanguage } from "@/contexts/LanguageContext";
 const mockPropertyDetails = {
   id: "prop1",
   type: "property",
-  title: "Modern 3-Bedroom Apartment with City View",
+  title: "Современная 3-комнатная квартира с видом на город",
   price: 350000,
-  location: "Moscow City, Presnensky District",
-  description: "This luxurious apartment offers a spacious living area with panoramic views of Moscow City. The modern design includes high-end finishes, integrated appliances, and smart home features. The apartment is located in a prestigious building with 24/7 security, concierge service, a fitness center, and underground parking.",
+  location: "Москва-Сити, Пресненский район",
+  description: "Эта роскошная квартира предлагает просторную жилую площадь с панорамным видом на Москва-Сити. Современный дизайн включает в себя высококачественную отделку, встроенную технику и систему умный дом. Квартира расположена в престижном здании с круглосуточной охраной, консьерж-сервисом, фитнес-центром и подземной парковкой.",
   features: [
-    "3 Bedrooms",
-    "2 Bathrooms",
-    "120 m² Living Area",
-    "15th Floor",
-    "Built in 2019",
-    "24/7 Security",
-    "Underground Parking",
-    "Fitness Center",
-    "Central Heating",
-    "Air Conditioning",
-    "Smart Home System",
+    "3 спальни",
+    "2 санузла", 
+    "120 м² жилая площадь",
+    "15 этаж",
+    "Построено в 2019 году",
+    "Круглосуточная охрана",
+    "Подземная парковка",
+    "Фитнес-центр",
+    "Центральное отопление",
+    "Кондиционирование",
+    "Система умный дом",
   ],
   images: [
     "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
@@ -38,19 +39,19 @@ const mockPropertyDetails = {
     "https://images.unsplash.com/photo-1617098900661-9479d34c2cea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
   ],
   specifications: {
-    area: "120 m²",
+    area: "120 м²",
     rooms: "3",
     bathrooms: "2",
     floor: "15/25",
     buildYear: "2019",
-    condition: "Excellent",
-    parking: "Underground, 1 space",
-    heating: "Central",
-    balcony: "Yes, 2",
-    elevator: "Yes",
+    condition: "Отличное",
+    parking: "Подземная, 1 место",
+    heating: "Центральное",
+    balcony: "Да, 2",
+    elevator: "Да",
   },
   sellerInfo: {
-    name: "Sberbank Real Estate Division",
+    name: "Отдел недвижимости Сбербанка",
     phone: "+7 (800) 123-45-67",
     email: "realestate@sberbank.ru",
   },
@@ -60,6 +61,7 @@ const mockPropertyDetails = {
   },
   createdAt: "2023-09-15",
   viewedCount: 578,
+  preApprovedMortgage: 400000,
 };
 
 // Similar properties for recommendations
@@ -67,45 +69,45 @@ const similarProperties = [
   {
     id: "sim1",
     type: "property" as const,
-    title: "Elegant 3-Bedroom Apartment",
+    title: "Элегантная 3-комнатная квартира",
     price: 330000,
     imageUrl: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    location: "Moscow City Center",
+    location: "Центр Москвы",
     specs: [
-      { label: "Area", value: "110 m²" },
-      { label: "Rooms", value: "3" },
-      { label: "Floor", value: "12/20" },
-      { label: "Built", value: "2020" },
+      { label: "Площадь", value: "110 м²" },
+      { label: "Комнаты", value: "3" },
+      { label: "Этаж", value: "12/20" },
+      { label: "Построено", value: "2020" },
     ],
     isFavorite: false,
   },
   {
     id: "sim2",
     type: "property" as const,
-    title: "Modern City Apartment",
+    title: "Современная городская квартира",
     price: 295000,
     imageUrl: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    location: "Moscow",
+    location: "Москва",
     specs: [
-      { label: "Area", value: "95 m²" },
-      { label: "Rooms", value: "2" },
-      { label: "Floor", value: "8/16" },
-      { label: "Built", value: "2018" },
+      { label: "Площадь", value: "95 м²" },
+      { label: "Комнаты", value: "2" },
+      { label: "Этаж", value: "8/16" },
+      { label: "Построено", value: "2018" },
     ],
     isFavorite: false,
   },
   {
     id: "sim3",
     type: "property" as const,
-    title: "Premium Riverside Loft",
+    title: "Премиум лофт с видом на реку",
     price: 420000,
     imageUrl: "https://images.unsplash.com/photo-1560448205-4d9b3e6bb6db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    location: "Moscow River View",
+    location: "Вид на Москву-реку",
     specs: [
-      { label: "Area", value: "155 m²" },
-      { label: "Rooms", value: "4" },
-      { label: "Floor", value: "20/25" },
-      { label: "Built", value: "2021" },
+      { label: "Площадь", value: "155 м²" },
+      { label: "Комнаты", value: "4" },
+      { label: "Этаж", value: "20/25" },
+      { label: "Построено", value: "2021" },
     ],
     isFavorite: true,
   },
@@ -242,9 +244,9 @@ const PropertyDetail = () => {
                     <div className="h-80 bg-gray-200 rounded-lg flex items-center justify-center">
                       <div className="text-center text-gray-500">
                         <MapPin size={48} className="mx-auto mb-2 text-sber-500" />
-                        <p className="font-medium">Map View</p>
-                        <p>Property is located at coordinates:</p>
-                        <p>Lat: {property.mapCoordinates.lat}, Lng: {property.mapCoordinates.lng}</p>
+                        <p className="font-medium">Карта</p>
+                        <p>Объект расположен по координатам:</p>
+                        <p>Широта: {property.mapCoordinates.lat}, Долгота: {property.mapCoordinates.lng}</p>
                       </div>
                     </div>
                   </div>
@@ -288,7 +290,7 @@ const PropertyDetail = () => {
                 <div className="mt-8 space-y-3 text-sm text-gray-600">
                   <div className="flex items-center">
                     <Calendar size={16} className="mr-2 text-sber-500" />
-                    <span>{t('property.listed')} {new Date(property.createdAt).toLocaleDateString()}</span>
+                    <span>{t('property.listed')} {new Date(property.createdAt).toLocaleDateString('ru-RU')}</span>
                   </div>
                   <div className="flex items-center">
                     <Clock size={16} className="mr-2 text-sber-500" />
@@ -296,21 +298,25 @@ const PropertyDetail = () => {
                   </div>
                   <div className="flex items-center">
                     <Eye size={16} className="mr-2 text-sber-500" />
-                    <span>{t('property.viewed')} {property.viewedCount} {t('property.times')}</span>
+                    <span>{t('property.viewed')} {property.viewedCount.toLocaleString('ru-RU')} {t('property.times')}</span>
                   </div>
                 </div>
                 
                 <div className="mt-8 p-4 bg-sber-50 rounded-lg">
-                  <h4 className="font-semibold mb-2">{t('property.financing')}</h4>
+                  <div className="mb-3">
+                    <h2 className="text-2xl font-semibold bg-gradient-to-r from-sber-500 to-sber-600 inline-block text-transparent bg-clip-text">
+                      ${property.preApprovedMortgage.toLocaleString()}
+                    </h2>
+                  </div>
                   <p className="text-sm text-gray-600 mb-3">
-                    {t('property.financing_description')}
+                    Получите предварительное одобрение ипотеки по специальным ставкам Сбербанка.
                   </p>
                   <Button 
                     variant="outline" 
                     size="sm" 
                     className="w-full text-sber-600 border-sber-500 hover:bg-sber-100"
                   >
-                    {t('property.financing_calculate')}
+                    Узнать условия
                   </Button>
                 </div>
               </CardContent>

@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
@@ -38,6 +39,13 @@ const AssetCard = ({
     e.stopPropagation();
     if (onToggleFavorite) onToggleFavorite(id);
   };
+
+  const formatPrice = (price: number, type: string) => {
+    if (type === "business" && title.includes("салон")) {
+      return `${price.toLocaleString('ru-RU')} ₽`;
+    }
+    return `$${price.toLocaleString()}`;
+  };
   
   return (
     <Link to={detailsPath}>
@@ -72,7 +80,7 @@ const AssetCard = ({
           <div className="flex justify-between items-start mb-2">
             <h3 className="font-semibold text-gray-800 line-clamp-1">{title}</h3>
             <span className="font-medium bg-gradient-to-r from-sber-500 to-sber-600 inline-block text-transparent bg-clip-text">
-              ${price.toLocaleString()}
+              {formatPrice(price, type)}
             </span>
           </div>
           {location && (

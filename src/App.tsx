@@ -7,6 +7,7 @@ import '@/i18n/config';
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import PropertyDetail from "./pages/PropertyDetail";
+import BusinessDetail from "./pages/BusinessDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -20,6 +21,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/property/:id" element={<PropertyDetail />} />
+            <Route path="/business/:id" element={<BusinessDetail />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

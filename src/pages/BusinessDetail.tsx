@@ -1,14 +1,13 @@
-
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Heart, Share, Phone, Mail, MapPin, Calendar, Building, Clock, Eye, MessageCircle } from "lucide-react";
+import { Heart, Share, MapPin, Building } from "lucide-react";
 import MainLayout from "@/components/layouts/MainLayout";
 import ImageGallery from "@/components/ImageGallery";
 import AssetCard from "@/components/AssetCard";
+import SellerInfoSection from "@/components/business/SellerInfoSection";
+import SpecificationRow from "@/components/business/SpecificationRow";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const mockBusinessDetails = {
@@ -115,7 +114,6 @@ const BusinessDetail = () => {
   const { id } = useParams();
   const [isFavorite, setIsFavorite] = useState(false);
   const [activeTab, setActiveTab] = useState("details");
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const business = mockBusinessDetails;
   const { t } = useLanguage();
   
@@ -132,18 +130,6 @@ const BusinessDetail = () => {
         [id]: !prev[id]
       }));
     }
-  };
-  
-  const SpecRow = ({ label, value }: { label: string, value: string }) => (
-    <div className="flex justify-between py-2 border-b border-gray-100">
-      <span className="text-gray-500">{label}</span>
-      <span className="font-medium">{value}</span>
-    </div>
-  );
-
-  const handleContactOption = (option: string) => {
-    console.log(`Contact option selected: ${option}`);
-    setIsContactModalOpen(false);
   };
 
   return (
@@ -208,16 +194,16 @@ const BusinessDetail = () => {
                   <div>
                     <h3 className="text-xl font-semibold mb-4">Спецификации</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8">
-                      <SpecRow label="Салоны" value={business.specifications.salons} />
-                      <SpecRow label="Сотрудники" value={business.specifications.employees} />
-                      <SpecRow label="Выручка" value={business.specifications.revenue} />
-                      <SpecRow label="Основан" value={business.specifications.established} />
-                      <SpecRow label="Парковка" value={business.specifications.parking} />
-                      <SpecRow label="Состояние" value={business.specifications.condition} />
-                      <SpecRow label="Общая площадь" value={business.specifications.area} />
-                      <SpecRow label="Оборудование" value={business.specifications.equipment} />
-                      <SpecRow label="Расположение" value={business.specifications.location} />
-                      <SpecRow label="Сертификация" value={business.specifications.certification} />
+                      <SpecificationRow label="Салоны" value={business.specifications.salons} />
+                      <SpecificationRow label="Сотрудники" value={business.specifications.employees} />
+                      <SpecificationRow label="Выручка" value={business.specifications.revenue} />
+                      <SpecificationRow label="Основан" value={business.specifications.established} />
+                      <SpecificationRow label="Парковка" value={business.specifications.parking} />
+                      <SpecificationRow label="Состояние" value={business.specifications.condition} />
+                      <SpecificationRow label="Общая площадь" value={business.specifications.area} />
+                      <SpecificationRow label="Оборудование" value={business.specifications.equipment} />
+                      <SpecificationRow label="Расположение" value={business.specifications.location} />
+                      <SpecificationRow label="Сертификация" value={business.specifications.certification} />
                     </div>
                   </div>
                 </TabsContent>
@@ -274,87 +260,12 @@ const BusinessDetail = () => {
           
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <Card className="sticky top-24">
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold mb-4">Информация о продавце</h3>
-                <div className="text-gray-700 mb-6">
-                  <p className="font-medium">{business.sellerInfo.name}</p>
-                </div>
-                
-                <div className="space-y-3 mb-6">
-                  <Button className="w-full bg-gradient-to-r from-sber-400 to-sber-600 hover:from-sber-500 hover:to-sber-700 text-white gap-2 shadow-md hover:shadow-lg transition-all">
-                    <Phone size={16} /> Позвонить продавцу
-                  </Button>
-                  <Button variant="outline" className="w-full gap-2 border-sber-500 text-sber-600 hover:bg-sber-50">
-                    <Mail size={16} /> Написать продавцу
-                  </Button>
-                </div>
-
-                {/* Credit Potential Section */}
-                <div className="border-t pt-6 mb-6">
-                  <div className="mb-4">
-                    <p className="text-lg font-semibold text-sber-600 mb-2">
-                      Кредитный потенциал: 100 000 000 ₽
-                    </p>
-                  </div>
-                  
-                  <Dialog open={isContactModalOpen} onOpenChange={setIsContactModalOpen}>
-                    <DialogTrigger asChild>
-                      <Button className="w-full bg-gradient-to-r from-sber-400 to-sber-600 hover:from-sber-500 hover:to-sber-700 text-white shadow-md hover:shadow-lg transition-all">
-                        Узнать условия
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="sm:max-w-md bg-white">
-                      <DialogHeader>
-                        <DialogTitle className="text-center text-lg font-semibold text-gray-900 mb-4">
-                          Ваш клиентский менеджер свяжется с вами в ближайшее время. Какой из способов связи вам удобнее?
-                        </DialogTitle>
-                      </DialogHeader>
-                      <div className="flex flex-col gap-3 mt-4">
-                        <Button 
-                          onClick={() => handleContactOption('call')}
-                          className="w-full bg-gradient-to-r from-sber-400 to-sber-600 hover:from-sber-500 hover:to-sber-700 text-white gap-2"
-                        >
-                          <Phone size={16} />
-                          Звонок
-                        </Button>
-                        <Button 
-                          onClick={() => handleContactOption('messenger')}
-                          variant="outline" 
-                          className="w-full gap-2 border-sber-500 text-sber-600 hover:bg-sber-50"
-                        >
-                          <MessageCircle size={16} />
-                          Мессенджер
-                        </Button>
-                        <Button 
-                          onClick={() => handleContactOption('email')}
-                          variant="outline" 
-                          className="w-full gap-2 border-sber-500 text-sber-600 hover:bg-sber-50"
-                        >
-                          <Mail size={16} />
-                          Эл. почта
-                        </Button>
-                      </div>
-                    </DialogContent>
-                  </Dialog>
-                </div>
-                
-                <div className="space-y-3 text-sm text-gray-600">
-                  <div className="flex items-center">
-                    <Calendar size={16} className="mr-2 text-sber-500" />
-                    <span>Размещено {new Date(business.createdAt).toLocaleDateString('ru-RU')}</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Clock size={16} className="mr-2 text-sber-500" />
-                    <span>Обновлено 2 дней назад</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Eye size={16} className="mr-2 text-sber-500" />
-                    <span>Просмотрено {business.viewedCount.toLocaleString('ru-RU')} раз</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            <SellerInfoSection
+              sellerInfo={business.sellerInfo}
+              createdAt={business.createdAt}
+              viewedCount={business.viewedCount}
+              creditAmount={100000000}
+            />
           </div>
         </div>
       </div>

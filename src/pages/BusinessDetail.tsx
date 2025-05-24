@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Heart, Share, Phone, Mail, MapPin, Calendar, Building, Clock, Eye } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Heart, Share, Phone, Mail, MapPin, Calendar, Building, Clock, Eye, MessageCircle } from "lucide-react";
 import MainLayout from "@/components/layouts/MainLayout";
 import ImageGallery from "@/components/ImageGallery";
 import AssetCard from "@/components/AssetCard";
@@ -114,6 +115,7 @@ const BusinessDetail = () => {
   const { id } = useParams();
   const [isFavorite, setIsFavorite] = useState(false);
   const [activeTab, setActiveTab] = useState("details");
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const business = mockBusinessDetails;
   const { t } = useLanguage();
   
@@ -138,6 +140,11 @@ const BusinessDetail = () => {
       <span className="font-medium">{value}</span>
     </div>
   );
+
+  const handleContactOption = (option: string) => {
+    console.log(`Contact option selected: ${option}`);
+    setIsContactModalOpen(false);
+  };
 
   return (
     <MainLayout>
@@ -274,7 +281,7 @@ const BusinessDetail = () => {
                   <p className="font-medium">{business.sellerInfo.name}</p>
                 </div>
                 
-                <div className="space-y-3">
+                <div className="space-y-3 mb-6">
                   <Button className="w-full bg-gradient-to-r from-sber-400 to-sber-600 hover:from-sber-500 hover:to-sber-700 text-white gap-2 shadow-md hover:shadow-lg transition-all">
                     <Phone size={16} /> Позвонить продавцу
                   </Button>
@@ -282,8 +289,57 @@ const BusinessDetail = () => {
                     <Mail size={16} /> Написать продавцу
                   </Button>
                 </div>
+
+                {/* Credit Potential Section */}
+                <div className="border-t pt-6 mb-6">
+                  <div className="mb-4">
+                    <p className="text-lg font-semibold text-sber-600 mb-2">
+                      Кредитный потенциал: 100 000 000 ₽
+                    </p>
+                  </div>
+                  
+                  <Dialog open={isContactModalOpen} onOpenChange={setIsContactModalOpen}>
+                    <DialogTrigger asChild>
+                      <Button className="w-full bg-gradient-to-r from-sber-400 to-sber-600 hover:from-sber-500 hover:to-sber-700 text-white shadow-md hover:shadow-lg transition-all">
+                        Узнать условия
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-md bg-white">
+                      <DialogHeader>
+                        <DialogTitle className="text-center text-lg font-semibold text-gray-900 mb-4">
+                          Ваш клиентский менеджер свяжется с вами в ближайшее время. Какой из способов связи вам удобнее?
+                        </DialogTitle>
+                      </DialogHeader>
+                      <div className="flex flex-col gap-3 mt-4">
+                        <Button 
+                          onClick={() => handleContactOption('call')}
+                          className="w-full bg-gradient-to-r from-sber-400 to-sber-600 hover:from-sber-500 hover:to-sber-700 text-white gap-2"
+                        >
+                          <Phone size={16} />
+                          Звонок
+                        </Button>
+                        <Button 
+                          onClick={() => handleContactOption('messenger')}
+                          variant="outline" 
+                          className="w-full gap-2 border-sber-500 text-sber-600 hover:bg-sber-50"
+                        >
+                          <MessageCircle size={16} />
+                          Мессенджер
+                        </Button>
+                        <Button 
+                          onClick={() => handleContactOption('email')}
+                          variant="outline" 
+                          className="w-full gap-2 border-sber-500 text-sber-600 hover:bg-sber-50"
+                        >
+                          <Mail size={16} />
+                          Эл. почта
+                        </Button>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                </div>
                 
-                <div className="mt-8 space-y-3 text-sm text-gray-600">
+                <div className="space-y-3 text-sm text-gray-600">
                   <div className="flex items-center">
                     <Calendar size={16} className="mr-2 text-sber-500" />
                     <span>Размещено {new Date(business.createdAt).toLocaleDateString('ru-RU')}</span>

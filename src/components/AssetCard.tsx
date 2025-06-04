@@ -30,21 +30,24 @@ const AssetCard = ({
   onToggleFavorite,
 }: AssetCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
-  
+
   const detailsPath = `/${type}/${id}`;
-  
+
   const handleFavoriteClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     if (onToggleFavorite) onToggleFavorite(id);
   };
-  
+
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
+
   return (
     <Link to={detailsPath}>
       <Card 
         className="overflow-hidden transition-all duration-300 hover:shadow-lg cursor-pointer h-full rounded-lg border border-gray-100"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         <div className="relative">
           <div 
@@ -71,8 +74,8 @@ const AssetCard = ({
         <div className="p-4">
           <div className="flex justify-between items-start mb-2">
             <h3 className="font-semibold text-gray-800 line-clamp-1">{title}</h3>
-            <span className="font-medium bg-gradient-to-r from-sber-500 to-sber-600 inline-block text-transparent bg-clip-text">
-              ${price.toLocaleString()}
+            <span className="font-medium bg-gradient-to-r from-sber-500 to-sber-600 inline-block text-transparent bg-clip-text whitespace-nowrap">
+              {price.toLocaleString()} ₽
             </span>
           </div>
           {location && (

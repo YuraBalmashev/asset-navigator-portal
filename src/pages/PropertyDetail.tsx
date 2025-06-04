@@ -14,7 +14,7 @@ const mockPropertyDetails = {
   id: "prop1",
   type: "property",
   title: "Современная 3-комнатная квартира с видом на город",
-  price: 350000,
+  price: 90000000,
   location: "Москва-Сити, Пресненский район",
   description: "Эта роскошная квартира предлагает просторную жилую площадь с панорамным видом на Москва-Сити. Современный дизайн включает в себя высококачественную отделку, встроенную технику и систему умный дом. Квартира расположена в престижном здании с круглосуточной охраной, консьерж-сервисом, фитнес-центром и подземной парковкой.",
   features: [
@@ -35,7 +35,6 @@ const mockPropertyDetails = {
     "https://images.unsplash.com/photo-1554995207-c18c203602cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     "https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    "https://images.unsplash.com/photo-1617098900661-9479d34c2cea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
   ],
   specifications: {
     area: "120 м²",
@@ -58,7 +57,7 @@ const mockPropertyDetails = {
     lat: 55.7558,
     lng: 37.6173,
   },
-  createdAt: "2023-09-15",
+  createdAt: "2024-09-15",
   viewedCount: 578,
   preApprovedMortgage: 400000,
 };
@@ -69,7 +68,7 @@ const similarProperties = [
     id: "sim1",
     type: "property" as const,
     title: "Элегантная 3-комнатная квартира",
-    price: 330000,
+    price: 210000000,
     imageUrl: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     location: "Центр Москвы",
     specs: [
@@ -84,7 +83,7 @@ const similarProperties = [
     id: "sim2",
     type: "property" as const,
     title: "Современная городская квартира",
-    price: 295000,
+    price: 95000000,
     imageUrl: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     location: "Москва",
     specs: [
@@ -99,7 +98,7 @@ const similarProperties = [
     id: "sim3",
     type: "property" as const,
     title: "Премиум лофт с видом на реку",
-    price: 420000,
+    price: 150000000,
     imageUrl: "https://images.unsplash.com/photo-1560448205-4d9b3e6bb6db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     location: "Вид на Москву-реку",
     specs: [
@@ -155,7 +154,7 @@ const PropertyDetail = () => {
               </div>
               <div className="flex items-center justify-between">
                 <h2 className="text-2xl font-semibold bg-gradient-to-r from-sber-500 to-sber-600 inline-block text-transparent bg-clip-text">
-                  {property.price.toLocaleString('ru-RU')} $
+                  {property.price.toLocaleString('ru-RU')} ₽
                 </h2>
                 <div className="flex gap-2">
                   <Button 
@@ -304,7 +303,8 @@ const PropertyDetail = () => {
                 <div className="mt-8 p-4 bg-sber-50 rounded-lg">
                   <div className="mb-3">
                     <h2 className="text-2xl font-semibold bg-gradient-to-r from-sber-500 to-sber-600 inline-block text-transparent bg-clip-text">
-                      Кредитный потенциал: 31 894 280 ₽
+                      <span className="block">Ваш кредитный потенциал:</span>
+                      <span className="block">100 000 000 ₽</span>
                     </h2>
                   </div>
                   <p className="text-sm text-gray-600 mb-3">

@@ -1,5 +1,4 @@
-
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -16,7 +15,7 @@ interface PromoBannerProps {
 }
 
 const PromoBanner = ({
-  title,
+  title, // Ensure this prop is passed and used correctly
   subtitle,
   description,
   buttonText,
@@ -31,7 +30,7 @@ const PromoBanner = ({
       <div 
         className="relative p-8 md:p-12 flex flex-col md:flex-row items-center justify-between"
         style={{
-          backgroundImage: `${colorGradient}, url(${imageUrl})`,
+          background: `${colorGradient}, url(${imageUrl})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -42,9 +41,8 @@ const PromoBanner = ({
           {description && (
             <p className="mb-6 max-w-lg animate-fade-in">{description}</p>
           )}
-          <Button 
-            asChild 
-            variant={variant === "primary" ? "default" : "secondary"}
+          <Button
+            asChild
             className={`animate-scale-in ${
               variant === "primary" 
                 ? "bg-white text-sber-600 hover:bg-gray-100 hover:text-sber-700 transition-colors" 

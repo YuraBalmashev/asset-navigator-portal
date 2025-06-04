@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div>
-            <h3 className="font-bold text-lg mb-4">Portal<span className="text-[#9b87f5]">DA</span></h3>
+            <h3 className="font-bold text-black mb-4">Portal<span className="text-primary">DA</span></h3>
             <p className="text-gray-600 mb-4">
               A marketplace for collateral and non-core assets by Sberbank.
             </p>

@@ -18,7 +18,7 @@ const Header = () => {
       <div className="container mx-auto flex items-center justify-between py-4">
         <div className="flex items-center gap-8">
           <Link to="/" className="font-bold text-2xl text-primary">
-            Portal<span className="text-[#9b87f5]">DA</span>
+            <span className="text-black">Portal</span><span className="text-primary">DA</span>
           </Link>
           
           {!isMobile && (

@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -7,6 +8,7 @@ import { Heart, Share, Phone, Mail, MapPin, Calendar, Home, Clock, Eye } from "l
 import MainLayout from "@/components/layouts/MainLayout";
 import ImageGallery from "@/components/ImageGallery";
 import AssetCard from "@/components/AssetCard";
+import PriceComparison from "@/components/PriceComparison";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 // This would come from an API in a real application
@@ -115,7 +117,7 @@ const PropertyDetail = () => {
   const { id } = useParams();
   const [isFavorite, setIsFavorite] = useState(false);
   const [activeTab, setActiveTab] = useState("details");
-  const property = mockPropertyDetails; // In a real app, we would fetch this based on the ID
+  const property = mockPropertyDetails;
   const { t } = useLanguage();
   
   const [favorites, setFavorites] = useState<Record<string, boolean>>({
@@ -251,6 +253,13 @@ const PropertyDetail = () => {
                 </TabsContent>
               </Tabs>
             </div>
+            
+            <PriceComparison
+              currentPrice={property.price}
+              averagePrice={125000000}
+              priceRange={{ min: 75000000, max: 220000000 }}
+              type="property"
+            />
             
             <div className="mt-12">
               <h3 className="text-2xl font-semibold mb-6">{t('property.similar')}</h3>

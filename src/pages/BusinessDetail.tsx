@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -8,6 +9,7 @@ import ImageGallery from "@/components/ImageGallery";
 import AssetCard from "@/components/AssetCard";
 import SellerInfoSection from "@/components/business/SellerInfoSection";
 import SpecificationRow from "@/components/business/SpecificationRow";
+import PriceComparison from "@/components/PriceComparison";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const mockBusinessDetails = {
@@ -242,6 +244,13 @@ const BusinessDetail = () => {
                 </TabsContent>
               </Tabs>
             </div>
+            
+            <PriceComparison
+              currentPrice={business.price}
+              averagePrice={55000000}
+              priceRange={{ min: 25000000, max: 95000000 }}
+              type="business"
+            />
             
             <div className="mt-12">
               <h3 className="text-2xl font-semibold mb-6">Похожие предложения</h3>

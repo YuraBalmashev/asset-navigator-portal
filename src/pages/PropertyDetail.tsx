@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Heart, Share, Phone, Mail, MapPin, Calendar, Home, Clock, Eye } from "lucide-react";
 import MainLayout from "@/components/layouts/MainLayout";
 import ImageGallery from "@/components/ImageGallery";
+import ImageManager from "@/components/ImageManager";
 import AssetCard from "@/components/AssetCard";
 import PriceComparison from "@/components/PriceComparison";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -119,6 +120,7 @@ const PropertyDetail = () => {
   const [activeTab, setActiveTab] = useState("details");
   const property = mockPropertyDetails;
   const { t } = useLanguage();
+  const [propertyImages, setPropertyImages] = useState(property.images);
   
   const [favorites, setFavorites] = useState<Record<string, boolean>>({
     sim3: true,
@@ -177,7 +179,7 @@ const PropertyDetail = () => {
               </div>
             </div>
             
-            <ImageGallery images={property.images} />
+            <ImageGallery images={propertyImages} />
             
             <div className="mt-8">
               <Tabs defaultValue="details" value={activeTab} onValueChange={setActiveTab}>
@@ -187,6 +189,9 @@ const PropertyDetail = () => {
                   </TabsTrigger>
                   <TabsTrigger value="features" className={activeTab === "features" ? "bg-sber-500 text-white" : ""}>
                     {t('property.features')}
+                  </TabsTrigger>
+                  <TabsTrigger value="images" className={activeTab === "images" ? "bg-sber-500 text-white" : ""}>
+                    Изображения
                   </TabsTrigger>
                   <TabsTrigger value="map" className={activeTab === "map" ? "bg-sber-500 text-white" : ""}>
                     {t('property.map')}
@@ -236,11 +241,18 @@ const PropertyDetail = () => {
                     </div>
                   </div>
                 </TabsContent>
+
+                <TabsContent value="images" className="space-y-6">
+                  <ImageManager
+                    images={propertyImages}
+                    onImagesChange={setPropertyImages}
+                    maxImages={15}
+                  />
+                </TabsContent>
                 
                 <TabsContent value="map" className="space-y-6">
                   <div>
                     <h3 className="text-xl font-semibold mb-4">{t('property.location')}</h3>
-                    {/* In a real app, this would be replaced with an actual map integration */}
                     <div className="h-80 bg-gray-200 rounded-lg flex items-center justify-center">
                       <div className="text-center text-gray-500">
                         <MapPin size={48} className="mx-auto mb-2 text-sber-500" />

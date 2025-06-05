@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Heart, Share, MapPin, Building } from "lucide-react";
 import MainLayout from "@/components/layouts/MainLayout";
 import ImageGallery from "@/components/ImageGallery";
+import ImageManager from "@/components/ImageManager";
 import AssetCard from "@/components/AssetCard";
 import SellerInfoSection from "@/components/business/SellerInfoSection";
 import SpecificationRow from "@/components/business/SpecificationRow";
@@ -118,6 +119,7 @@ const BusinessDetail = () => {
   const [activeTab, setActiveTab] = useState("details");
   const business = mockBusinessDetails;
   const { t } = useLanguage();
+  const [businessImages, setBusinessImages] = useState(business.images);
   
   const [favorites, setFavorites] = useState<Record<string, boolean>>({
     sim3b: true,
@@ -169,7 +171,7 @@ const BusinessDetail = () => {
               </div>
             </div>
             
-            <ImageGallery images={business.images} />
+            <ImageGallery images={businessImages} />
             
             <div className="mt-8">
               <Tabs defaultValue="details" value={activeTab} onValueChange={setActiveTab}>
@@ -179,6 +181,9 @@ const BusinessDetail = () => {
                   </TabsTrigger>
                   <TabsTrigger value="features" className={activeTab === "features" ? "bg-sber-500 text-white" : ""}>
                     Особенности
+                  </TabsTrigger>
+                  <TabsTrigger value="images" className={activeTab === "images" ? "bg-sber-500 text-white" : ""}>
+                    Изображения
                   </TabsTrigger>
                   <TabsTrigger value="map" className={activeTab === "map" ? "bg-sber-500 text-white" : ""}>
                     Карта
@@ -227,6 +232,14 @@ const BusinessDetail = () => {
                       ))}
                     </div>
                   </div>
+                </TabsContent>
+
+                <TabsContent value="images" className="space-y-6">
+                  <ImageManager
+                    images={businessImages}
+                    onImagesChange={setBusinessImages}
+                    maxImages={25}
+                  />
                 </TabsContent>
                 
                 <TabsContent value="map" className="space-y-6">

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Heart, Share, Phone, Mail, MapPin, Calendar, Car, Clock, Eye } from "lucide-react";
 import MainLayout from "@/components/layouts/MainLayout";
 import ImageGallery from "@/components/ImageGallery";
+import ImageManager from "@/components/ImageManager";
 import AssetCard from "@/components/AssetCard";
 import PriceComparison from "@/components/PriceComparison";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -116,6 +117,7 @@ const VehicleDetail = () => {
   const [activeTab, setActiveTab] = useState("details");
   const vehicle = mockVehicleDetails;
   const { t } = useLanguage();
+  const [vehicleImages, setVehicleImages] = useState(vehicle.images);
   
   const [favorites, setFavorites] = useState<Record<string, boolean>>({
     sim3v: true,
@@ -174,7 +176,7 @@ const VehicleDetail = () => {
               </div>
             </div>
             
-            <ImageGallery images={vehicle.images} />
+            <ImageGallery images={vehicleImages} />
             
             <div className="mt-8">
               <Tabs defaultValue="details" value={activeTab} onValueChange={setActiveTab}>
@@ -184,6 +186,9 @@ const VehicleDetail = () => {
                   </TabsTrigger>
                   <TabsTrigger value="features" className={activeTab === "features" ? "bg-sber-500 text-white" : ""}>
                     Особенности
+                  </TabsTrigger>
+                  <TabsTrigger value="images" className={activeTab === "images" ? "bg-sber-500 text-white" : ""}>
+                    Изображения
                   </TabsTrigger>
                   <TabsTrigger value="map" className={activeTab === "map" ? "bg-sber-500 text-white" : ""}>
                     Карта
@@ -232,6 +237,14 @@ const VehicleDetail = () => {
                       ))}
                     </div>
                   </div>
+                </TabsContent>
+
+                <TabsContent value="images" className="space-y-6">
+                  <ImageManager
+                    images={vehicleImages}
+                    onImagesChange={setVehicleImages}
+                    maxImages={20}
+                  />
                 </TabsContent>
                 
                 <TabsContent value="map" className="space-y-6">

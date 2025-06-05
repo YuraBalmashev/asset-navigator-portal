@@ -1,0 +1,63 @@
+
+export const mockVehicles = [
+  {
+    id: "car1",
+    type: "vehicle" as const,
+    title: "Audi Q7 Premium Plus",
+    price: 45000,
+    imageUrl: "https://images.unsplash.com/photo-1581362508255-e4e31556f06b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    location: "Moscow",
+    specs: [
+      { label: "Year", value: "2021" },
+      { label: "Mileage", value: "25,000 km" },
+      { label: "Engine", value: "3.0L V6" },
+      { label: "Color", value: "Black" },
+    ],
+    isFavorite: true,
+  },
+  {
+    id: "car2",
+    type: "vehicle" as const,
+    title: "Mercedes-Benz E-Class",
+    price: 52000,
+    imageUrl: "https://images.unsplash.com/photo-1549399542-7e8559342222?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    location: "St. Petersburg",
+    specs: [
+      { label: "Year", value: "2020" },
+      { label: "Mileage", value: "32,000 km" },
+      { label: "Engine", value: "2.0L I4" },
+      { label: "Color", value: "Silver" },
+    ],
+    isFavorite: false,
+  },
+  {
+    id: "veh1",
+    type: "vehicle" as const,
+    title: "Mercedes-Benz Sprinter",
+    price: 4500000,
+    imageUrl: "/lovable-uploads/e78f3c63-648d-490f-9c5f-644a02b9d133.png",
+    location: "Москва",
+    specs: [
+      { label: "Год", value: "2023" },
+      { label: "Пробег", value: "25,000 км" },
+      { label: "Двигатель", value: "2.1L Дизель" },
+      { label: "Цвет", value: "Белый" },
+    ],
+    isFavorite: false,
+  },
+  {
+    id: "car3",
+    type: "vehicle" as const,
+    title: "BMW X5 xDrive",
+    price: 63000,
+    imageUrl: "https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    location: "Kazan",
+    specs: [
+      { label: "Year", value: "2022" },
+      { label: "Mileage", value: "18,500 km" },
+      { label: "Engine", value: "3.0L I6" },
+      { label: "Color", value: "Blue" },
+    ],
+    isFavorite: false,
+  },
+];

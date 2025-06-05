@@ -1,4 +1,5 @@
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
@@ -32,7 +33,7 @@ const mockVehicleDetails = {
     "Подогрев сидений",
   ],
   images: [
-    "/lovable-uploads/52a2f2ab-e291-4eba-b168-3cb7d5520dea.png",
+    "/lovable-uploads/e78f3c63-648d-490f-9c5f-644a02b9d133.png",
     "https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
@@ -121,6 +122,21 @@ const VehicleDetail = () => {
   const [favorites, setFavorites] = useState<Record<string, boolean>>({
     sim3v: true,
   });
+
+  // Load persisted images on component mount
+  useEffect(() => {
+    const savedImages = localStorage.getItem(`vehicle-images-${vehicle.id}`);
+    if (savedImages) {
+      try {
+        const parsedImages = JSON.parse(savedImages);
+        if (Array.isArray(parsedImages) && parsedImages.length > 0) {
+          setVehicleImages(parsedImages);
+        }
+      } catch (error) {
+        console.error('Error loading saved vehicle images:', error);
+      }
+    }
+  }, [vehicle.id]);
 
   const toggleFavorite = (id: string) => {
     if (id === vehicle.id) {
@@ -243,6 +259,7 @@ const VehicleDetail = () => {
                     images={vehicleImages}
                     onImagesChange={setVehicleImages}
                     maxImages={20}
+                    storageKey={`vehicle-images-${vehicle.id}`}
                   />
                 </TabsContent>
                 

@@ -1,10 +1,8 @@
-
 import { Home, Car, Briefcase } from "lucide-react";
 import MainLayout from "@/components/layouts/MainLayout";
 import SearchBar from "@/components/SearchBar";
 import CategoryCard from "@/components/CategoryCard";
 import FeaturedAssets from "@/components/FeaturedAssets";
-import Recommendations from "@/components/Recommendations";
 import AdvertisingWidget from "@/components/AdvertisingWidget";
 import RecommendedBusinessAssets from "@/components/RecommendedBusinessAssets";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -91,7 +89,7 @@ const Index = () => {
       type: "vehicle" as const,
       title: "Mercedes-Benz Sprinter",
       price: 4500000,
-      imageUrl: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      imageUrl: "/lovable-uploads/e78f3c63-648d-490f-9c5f-644a02b9d133.png",
       location: "Москва",
       specs: [
         { label: "Год", value: "2023" },
@@ -181,8 +179,6 @@ const Index = () => {
         <AdvertisingWidget className="mb-12" />
         
         <FeaturedAssets />
-        
-        <Recommendations />
       </div>
     </MainLayout>
   );

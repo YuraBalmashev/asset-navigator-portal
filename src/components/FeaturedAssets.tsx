@@ -87,6 +87,21 @@ const mockVehicles = [
     isFavorite: false,
   },
   {
+    id: "veh1",
+    type: "vehicle" as const,
+    title: "Mercedes-Benz Sprinter",
+    price: 4500000,
+    imageUrl: "/lovable-uploads/e78f3c63-648d-490f-9c5f-644a02b9d133.png",
+    location: "Москва",
+    specs: [
+      { label: "Год", value: "2023" },
+      { label: "Пробег", value: "25,000 км" },
+      { label: "Двигатель", value: "2.1L Дизель" },
+      { label: "Цвет", value: "Белый" },
+    ],
+    isFavorite: false,
+  },
+  {
     id: "car3",
     type: "vehicle" as const,
     title: "BMW X5 xDrive",
@@ -107,20 +122,50 @@ const mockBusinesses = [
   {
     id: "biz1",
     type: "business" as const,
-    title: "Hotel Complex by the Sea",
-    price: 1200000,
-    imageUrl: "https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    location: "Sochi",
+    title: "Фитнес-клуб",
+    price: 85000000,
+    imageUrl: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    location: "Москва",
     specs: [
-      { label: "Rooms", value: "45" },
-      { label: "Area", value: "2800 m²" },
-      { label: "Land", value: "5000 m²" },
-      { label: "Built", value: "2015" },
+      { label: "Филиалы", value: "10" },
+      { label: "Клиенты", value: "1,200" },
+      { label: "Выручка", value: "10,400,000 ₽/мес." },
+      { label: "Основан", value: "2021" },
     ],
     isFavorite: false,
   },
   {
     id: "biz2",
+    type: "business" as const,
+    title: "Ресторанная сеть",
+    price: 73000000,
+    imageUrl: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    location: "Москва",
+    specs: [
+      { label: "Рестораны", value: "5" },
+      { label: "Сотрудники", value: "45" },
+      { label: "Выручка", value: "15,200,000 ₽/мес." },
+      { label: "Основан", value: "2016" },
+    ],
+    isFavorite: false,
+  },
+  {
+    id: "biz3",
+    type: "business" as const,
+    title: "Сеть магазинов одежды",
+    price: 29000000,
+    imageUrl: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    location: "Санкт-Петербург",
+    specs: [
+      { label: "Магазины", value: "6" },
+      { label: "Сотрудники", value: "22" },
+      { label: "Выручка", value: "1,800,000 ₽/мес." },
+      { label: "Основан", value: "2024" },
+    ],
+    isFavorite: false,
+  },
+  {
+    id: "biz2_old",
     type: "business" as const,
     title: "Restaurant in City Center",
     price: 380000,
@@ -135,7 +180,7 @@ const mockBusinesses = [
     isFavorite: true,
   },
   {
-    id: "biz3",
+    id: "biz3_old",
     type: "business" as const,
     title: "Retail Store Chain",
     price: 850000,
@@ -149,13 +194,28 @@ const mockBusinesses = [
     ],
     isFavorite: false,
   },
+  {
+    id: "biz1_old",
+    type: "business" as const,
+    title: "Hotel Complex by the Sea",
+    price: 1200000,
+    imageUrl: "https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    location: "Sochi",
+    specs: [
+      { label: "Rooms", value: "45" },
+      { label: "Area", value: "2800 m²" },
+      { label: "Land", value: "5000 m²" },
+      { label: "Built", value: "2015" },
+    ],
+    isFavorite: false,
+  },
 ];
 
 const FeaturedAssets = () => {
   const [favorites, setFavorites] = useState<Record<string, boolean>>({
     prop2: true,
     car1: true,
-    biz2: true,
+    biz2_old: true,
   });
 
   const toggleFavorite = (id: string) => {

@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Upload, Trash2, Plus } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
@@ -8,11 +8,34 @@ interface ImageManagerProps {
   images: string[];
   onImagesChange: (images: string[]) => void;
   maxImages?: number;
+  storageKey: string; // Add storage key for persistence
 }
 
-const ImageManager = ({ images, onImagesChange, maxImages = 10 }: ImageManagerProps) => {
+const ImageManager = ({ images, onImagesChange, maxImages = 10, storageKey }: ImageManagerProps) => {
   const [isUploading, setIsUploading] = useState(false);
   const { toast } = useToast();
+
+  // Load images from localStorage on component mount
+  useEffect(() => {
+    const savedImages = localStorage.getItem(storageKey);
+    if (savedImages) {
+      try {
+        const parsedImages = JSON.parse(savedImages);
+        if (Array.isArray(parsedImages) && parsedImages.length > 0) {
+          onImagesChange(parsedImages);
+        }
+      } catch (error) {
+        console.error('Error loading saved images:', error);
+      }
+    }
+  }, [storageKey, onImagesChange]);
+
+  // Save images to localStorage whenever images change
+  useEffect(() => {
+    if (images.length > 0) {
+      localStorage.setItem(storageKey, JSON.stringify(images));
+    }
+  }, [images, storageKey]);
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
@@ -40,6 +63,13 @@ const ImageManager = ({ images, onImagesChange, maxImages = 10 }: ImageManagerPr
   const handleImageDelete = (index: number) => {
     const updatedImages = images.filter((_, i) => i !== index);
     onImagesChange(updatedImages);
+    
+    // Update localStorage
+    if (updatedImages.length === 0) {
+      localStorage.removeItem(storageKey);
+    } else {
+      localStorage.setItem(storageKey, JSON.stringify(updatedImages));
+    }
     
     toast({
       title: "Изображение удалено",

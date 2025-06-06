@@ -1,10 +1,8 @@
-
 import { Home, Car, Briefcase } from "lucide-react";
 import MainLayout from "@/components/layouts/MainLayout";
 import SearchBar from "@/components/SearchBar";
 import CategoryCard from "@/components/CategoryCard";
 import FeaturedAssets from "@/components/FeaturedAssets";
-import Recommendations from "@/components/Recommendations";
 import AdvertisingWidget from "@/components/AdvertisingWidget";
 import RecommendedBusinessAssets from "@/components/RecommendedBusinessAssets";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -181,8 +179,6 @@ const Index = () => {
         <AdvertisingWidget className="mb-12" />
         
         <FeaturedAssets />
-        
-        <Recommendations />
       </div>
     </MainLayout>
   );

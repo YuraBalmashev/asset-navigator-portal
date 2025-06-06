@@ -49,7 +49,7 @@ const PromoBanner = ({
                 : "bg-gradient-to-r from-sber-400 to-sber-600 text-white hover:from-sber-500 hover:to-sber-700 shadow-md hover:shadow-lg"
             }`}
           >
-            <Link to={buttonLink}>{buttonText}</Link>
+            <Link to="https://www.sberbank.com/ru/person/credits/money/avtokredit">{buttonText}</Link>
           </Button>
         </div>
         <div className="mt-6 md:mt-0 z-10 md:w-1/3">

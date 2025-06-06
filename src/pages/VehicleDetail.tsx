@@ -15,19 +15,19 @@ import { useLanguage } from "@/contexts/LanguageContext";
 const mockVehicleDetails = {
   id: "veh1",
   type: "vehicle",
-  title: "BMW X5 xDrive40i",
-  price: 6500000,
+  title: "BMW M5 VII G90",
+  price: 26500000,
   location: "Москва",
-  description: "Премиальный BMW X5 в отличном состоянии. Автомобиль прошел полное техническое обслуживание, имеет полную сервисную историю. Один владелец, некурящий. Все системы работают исправно. Автомобиль находится в идеальном техническом и визуальном состоянии.",
+  description: "Новый автомобиль. Предоставляется Юридическая гарантия. Стоимость указана за наличный расчёт. Доступна оплата за безналичный расчёт с и без НДС",
   features: [
-    "xDrive полный привод",
-    "Панорамная крыша",
-    "Кожаный салон",
-    "Навигационная система",
-    "Камера заднего вида",
+    "M Drive Professional",
+    "BMW Iconic Glow Экстерьер Пакет",
+    "M Shadowline Фары",
+    "Панорамное стекло Крыша",
+    "BMW IconicSounds Electric",
     "Парковочные датчики",
-    "Круиз-контроль",
-    "Bluetooth",
+    "Parking Assistant Plus с системой камер 360",
+    "Комфортный доступ",
     "USB порты",
     "Климат-контроль",
     "Подогрев сидений",
@@ -39,16 +39,16 @@ const mockVehicleDetails = {
     "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
   ],
   specifications: {
-    year: "2022",
-    mileage: "35,000 км",
-    engine: "3.0L Twin Turbo I6",
+    year: "2025",
+    mileage: "30 км",
+    engine: "4.4 л / 727 л.с. / гибрид",
     transmission: "Автоматическая 8-ступенчатая",
     fuelType: "Бензин",
     color: "Графитовый металлик",
     doors: "5",
-    seats: "7",
+    seats: "5",
     driveType: "Полный привод",
-    condition: "Отличное",
+    condition: "Новый",
   },
   sellerInfo: {
     name: "Автосалон Сбербанка",
@@ -59,7 +59,7 @@ const mockVehicleDetails = {
     lat: 55.7558,
     lng: 37.6173,
   },
-  createdAt: "2024-10-20",
+  createdAt: "2025-05-31",
   viewedCount: 342,
 };
 
@@ -67,14 +67,15 @@ const similarVehicles = [
   {
     id: "sim1v",
     type: "vehicle" as const,
-    title: "Audi Q7 55 TFSI",
+    title: "Audi RS6 Performance",
     price: 7200000,
-    imageUrl: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    imageUrl:
+      "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     location: "Москва",
     specs: [
-      { label: "Год", value: "2023" },
+      { label: "Год", value: "2022" },
       { label: "Пробег", value: "18,000 км" },
-      { label: "Двигатель", value: "3.0L V6 Turbo" },
+      { label: "Двигатель", value: "4.0L V8 TwinTurbo" },
       { label: "Цвет", value: "Черный" },
     ],
     isFavorite: false,
@@ -82,24 +83,26 @@ const similarVehicles = [
   {
     id: "sim2v",
     type: "vehicle" as const,
-    title: "Mercedes-Benz GLE 350",
-    price: 6800000,
-    imageUrl: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    title: "Mercedes-Benz AMG GT",
+    price: 41800000,
+    imageUrl:
+      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     location: "Санкт-Петербург",
     specs: [
-      { label: "Год", value: "2021" },
-      { label: "Пробег", value: "42,000 км" },
-      { label: "Двигатель", value: "2.0L Turbo" },
-      { label: "Цвет", value: "Белый" },
+      { label: "Год", value: "2024" },
+      { label: "Пробег", value: "12,000 км" },
+      { label: "Двигатель", value: "4.0L Turbo" },
+      { label: "Цвет", value: "Серый" },
     ],
     isFavorite: false,
   },
   {
     id: "sim3v",
     type: "vehicle" as const,
-    title: "Lexus RX 350",
+    title: "Dodge Challenger SRT",
     price: 5900000,
-    imageUrl: "https://images.unsplash.com/photo-1626668893632-6f3a4466d22f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    imageUrl:
+      "https://images.unsplash.com/photo-1626668893632-6f3a4466d22f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     location: "Москва",
     specs: [
       { label: "Год", value: "2020" },
@@ -265,8 +268,8 @@ const VehicleDetail = () => {
             
             <PriceComparison
               currentPrice={vehicle.price}
-              averagePrice={6200000}
-              priceRange={{ min: 4500000, max: 8500000 }}
+              averagePrice={24250000}
+              priceRange={{ min: 19500000, max: 29000000 }}
               type="vehicle"
             />
             

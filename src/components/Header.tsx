@@ -36,15 +36,6 @@ const Header = () => {
           )}
         </div>
 
-        {!isMobile && (
-          <div className="hidden md:flex relative max-w-md w-full mx-4">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
-            <Input
-              className="pl-10 pr-4 py-2 w-full"
-              placeholder={t('search.placeholder')}
-            />
-          </div>
-        )}
 
         <div className="flex items-center gap-2">
           {!isMobile ? (

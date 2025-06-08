@@ -19,9 +19,9 @@ import AssetCard from "@/components/AssetCard";
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("profile");
   const [user, setUser] = useState({
-    firstName: "Alex",
-    lastName: "Smith",
-    email: "alex.smith@example.com",
+    firstName: "Юрий",
+    lastName: "Б.",
+    email: "example@example.com",
     phone: "+7 (923) 456-78-90",
     notifications: {
       email: true,
@@ -85,7 +85,7 @@ const Dashboard = () => {
       id: "rv1",
       type: "property" as const,
       title: "Luxury Penthouse with View",
-      price: 450000,
+      price: 45000000,
       imageUrl: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
       location: "St. Petersburg",
       specs: [
@@ -100,7 +100,7 @@ const Dashboard = () => {
       id: "rv2",
       type: "vehicle" as const,
       title: "Mercedes-Benz E-Class",
-      price: 52000,
+      price: 5200000,
       imageUrl: "https://images.unsplash.com/photo-1549399542-7e8559342222?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
       location: "St. Petersburg",
       specs: [
@@ -115,7 +115,7 @@ const Dashboard = () => {
       id: "rv3",
       type: "property" as const,
       title: "Suburban Family House",
-      price: 320000,
+      price: 96000000,
       imageUrl: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
       location: "Moscow Oblast",
       specs: [

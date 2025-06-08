@@ -4,7 +4,7 @@ export const mockProperties = [
     id: "prop1",
     type: "property" as const,
     title: "Modern 2-Bedroom Apartment",
-    price: 125000,
+    price: 125000000,
     imageUrl: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     location: "Moscow City Center",
     specs: [
@@ -19,7 +19,7 @@ export const mockProperties = [
     id: "prop2",
     type: "property" as const,
     title: "Luxury Penthouse with View",
-    price: 450000,
+    price: 45000000,
     imageUrl: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     location: "St. Petersburg",
     specs: [
@@ -34,7 +34,7 @@ export const mockProperties = [
     id: "prop3",
     type: "property" as const,
     title: "Suburban Family House",
-    price: 320000,
+    price: 96000000,
     imageUrl: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     location: "Moscow Oblast",
     specs: [

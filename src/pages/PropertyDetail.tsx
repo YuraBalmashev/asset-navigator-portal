@@ -247,6 +247,7 @@ const PropertyDetail = () => {
                     images={propertyImages}
                     onImagesChange={setPropertyImages}
                     maxImages={15}
+                    storageKey="property-images"
                   />
                 </TabsContent>
                 

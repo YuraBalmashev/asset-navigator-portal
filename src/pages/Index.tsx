@@ -89,7 +89,7 @@ const Index = () => {
       type: "vehicle" as const,
       title: "BMW M5 VII G90",
       price: 26500000,
-      imageUrl: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      imageUrl: "/lovable-uploads/e78f3c63-648d-490f-9c5f-644a02b9d133.png",
       location: "Москва",
       specs: [
         { label: "Год", value: "2025" },

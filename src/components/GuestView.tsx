@@ -1,34 +1,34 @@
 
-import { Home, Car, Briefcase } from "lucide-react";
-import CategoryCard from "@/components/CategoryCard";
+import { useState } from "react";
+import AssetCard from "@/components/AssetCard";
+import SearchBar from "@/components/SearchBar";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { mockProperties } from "@/data/mockProperties";
+import { mockVehicles } from "@/data/mockVehicles";
+import { mockBusinesses } from "@/data/mockBusinesses";
 
 const GuestView = () => {
   const { t } = useLanguage();
+  const [favorites, setFavorites] = useState<Record<string, boolean>>({});
 
-  const categories = [
-    {
-      title: t('category.properties.title'),
-      description: t('category.properties.description'),
-      icon: <Home size={24} />,
-      imageUrl: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-      link: "/properties",
-    },
-    {
-      title: t('category.vehicles.title'),
-      description: t('category.vehicles.description'),
-      icon: <Car size={24} />,
-      imageUrl: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-      link: "/vehicles",
-    },
-    {
-      title: t('category.businesses.title'),
-      description: t('category.businesses.description'),
-      icon: <Briefcase size={24} />,
-      imageUrl: "https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-      link: "/businesses",
-    },
+  // Combine all assets into one array
+  const allAssets = [
+    ...mockProperties,
+    ...mockVehicles,
+    ...mockBusinesses,
   ];
+
+  const toggleFavorite = (id: string) => {
+    setFavorites(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
+
+  const handleSearch = (query: string) => {
+    // For guest users, we can implement basic search functionality
+    console.log('Guest search:', query);
+  };
 
   return (
     <div className="container mx-auto px-4 py-12">
@@ -39,15 +39,19 @@ const GuestView = () => {
         {t('home.subtitle')}
       </p>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {categories.map((category) => (
-          <CategoryCard
-            key={category.title}
-            title={category.title}
-            description={category.description}
-            icon={category.icon}
-            imageUrl={category.imageUrl}
-            link={category.link}
+      <SearchBar 
+        placeholder={t('home.search.placeholder')}
+        onSearch={handleSearch}
+        className="mb-12"
+      />
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {allAssets.map((asset) => (
+          <AssetCard
+            key={asset.id}
+            {...asset}
+            isFavorite={favorites[asset.id] || false}
+            onToggleFavorite={toggleFavorite}
           />
         ))}
       </div>

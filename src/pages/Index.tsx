@@ -1,3 +1,4 @@
+
 import { Home, Car, Briefcase } from "lucide-react";
 import MainLayout from "@/components/layouts/MainLayout";
 import SearchBar from "@/components/SearchBar";
@@ -168,7 +169,7 @@ const Index = () => {
 
           {showSearchResults && (
             <div className="mb-12">
-              <h2 className="text-2xl font-semibold mb-6">Результаты поиска</h2>
+              <h2 className="text-2xl font-semibold mb-6">{t('common.search_results')}</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {searchResults.map((item) => (
                   <AssetCard

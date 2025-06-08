@@ -84,5 +84,78 @@
       "balcony": "Balcony",
       "elevator": "Elevator"
     }
+  },
+  "vehicle": {
+    "details": "Details",
+    "features": "Features",
+    "specifications": "Specifications",
+    "seller": {
+      "info": "Seller Information",
+      "call": "Call Seller",
+      "email": "Email Seller"
+    },
+    "financing": "Financing Options Available",
+    "financing_description": "Get pre-approved for vehicle financing with competitive rates.",
+    "financing_calculate": "Calculate Financing",
+    "listed": "Listed on",
+    "updated": "Last updated",
+    "viewed": "Viewed",
+    "times": "times",
+    "days_ago": "days ago"
+  },
+  "business": {
+    "details": "Details",
+    "overview": "Business Overview",
+    "financials": "Financial Information",
+    "seller": {
+      "info": "Seller Information",
+      "call": "Call Seller",
+      "email": "Email Seller"
+    },
+    "credit_potential": "Credit Potential",
+    "credit_description": "Business credit analysis and financing options available.",
+    "credit_calculate": "Calculate Credit",
+    "listed": "Listed on",
+    "updated": "Last updated",
+    "viewed": "Viewed",
+    "times": "times",
+    "days_ago": "days ago"
+  },
+  "sales_agent": {
+    "title": "Sales Agent Dashboard",
+    "subtitle": "Manage your assigned assets and track buyer recommendations",
+    "table": {
+      "asset": "Asset",
+      "price": "Price",
+      "seller": "Seller",
+      "sale_type": "Sale Type",
+      "buyers": "Buyers"
+    },
+    "sale_types": {
+      "direct": "Direct",
+      "auction": "Auction",
+      "bankruptcy": "Bankruptcy"
+    },
+    "buyers_modal": {
+      "title": "Recommended Buyers",
+      "subtitle": "for",
+      "name": "Name",
+      "phone": "Phone",
+      "close": "Close"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "search_results": "Search Results"
   }
 }

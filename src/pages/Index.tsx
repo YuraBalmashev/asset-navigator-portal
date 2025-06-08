@@ -5,12 +5,16 @@ import CategoryCard from "@/components/CategoryCard";
 import FeaturedAssets from "@/components/FeaturedAssets";
 import AdvertisingWidget from "@/components/AdvertisingWidget";
 import RecommendedBusinessAssets from "@/components/RecommendedBusinessAssets";
+import SalesAgentDashboard from "@/components/SalesAgentDashboard";
+import GuestView from "@/components/GuestView";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useUser } from "@/contexts/UserContext";
 import { useState } from "react";
 import AssetCard from "@/components/AssetCard";
 
 const Index = () => {
   const { t } = useLanguage();
+  const { currentUser } = useUser();
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [showSearchResults, setShowSearchResults] = useState(false);
 
@@ -125,6 +129,26 @@ const Index = () => {
     }));
   };
 
+  // Render different views based on user type
+  if (currentUser.type === 'sales-agent') {
+    return (
+      <MainLayout>
+        <SalesAgentDashboard />
+      </MainLayout>
+    );
+  }
+
+  if (currentUser.type === 'guest') {
+    return (
+      <MainLayout>
+        <div className="bg-gradient-to-b from-[#F1FAF1] to-white py-16">
+          <GuestView />
+        </div>
+      </MainLayout>
+    );
+  }
+
+  // Authorized user view (existing functionality)
   return (
     <MainLayout>
       <div className="bg-gradient-to-b from-[#F1FAF1] to-white py-16">

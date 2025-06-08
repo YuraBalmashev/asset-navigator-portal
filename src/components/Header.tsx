@@ -1,17 +1,23 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Search, User, Heart, Bell, Menu } from "lucide-react";
+import { Search, Heart, Bell, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useUser } from "@/contexts/UserContext";
 import LanguageSelector from "./LanguageSelector";
+import UserProfileDropdown from "./UserProfileDropdown";
 
 const Header = () => {
   const isMobile = useIsMobile();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t } = useLanguage();
+  const { currentUser } = useUser();
+
+  // Hide certain elements for guest users
+  const showPersonalizedFeatures = currentUser.type !== 'guest';
 
   return (
     <header className="bg-white border-b border-b-gray-100 sticky top-0 z-50">
@@ -41,21 +47,21 @@ const Header = () => {
           {!isMobile ? (
             <>
               <LanguageSelector />
-              <Button variant="ghost" size="icon" asChild>
-                <Link to="/favorites">
-                  <Heart size={20} className="text-gray-600" />
-                </Link>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <Link to="/notifications">
-                  <Bell size={20} className="text-gray-600" />
-                </Link>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <Link to="/dashboard">
-                  <User size={20} className="text-gray-600" />
-                </Link>
-              </Button>
+              {showPersonalizedFeatures && (
+                <>
+                  <Button variant="ghost" size="icon" asChild>
+                    <Link to="/favorites">
+                      <Heart size={20} className="text-gray-600" />
+                    </Link>
+                  </Button>
+                  <Button variant="ghost" size="icon" asChild>
+                    <Link to="/notifications">
+                      <Bell size={20} className="text-gray-600" />
+                    </Link>
+                  </Button>
+                </>
+              )}
+              <UserProfileDropdown />
             </>
           ) : (
             <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -88,15 +94,22 @@ const Header = () => {
             <Link to="/businesses" className="text-gray-600 hover:text-[#9b87f5] py-2 border-b border-gray-100">
               {t('nav.businesses')}
             </Link>
-            <Link to="/dashboard" className="text-gray-600 hover:text-[#9b87f5] py-2 border-b border-gray-100">
-              {t('nav.dashboard')}
-            </Link>
-            <Link to="/favorites" className="text-gray-600 hover:text-[#9b87f5] py-2 border-b border-gray-100">
-              {t('nav.favorites')}
-            </Link>
-            <Link to="/notifications" className="text-gray-600 hover:text-[#9b87f5] py-2">
-              {t('nav.notifications')}
-            </Link>
+            {showPersonalizedFeatures && (
+              <>
+                <Link to="/dashboard" className="text-gray-600 hover:text-[#9b87f5] py-2 border-b border-gray-100">
+                  {t('nav.dashboard')}
+                </Link>
+                <Link to="/favorites" className="text-gray-600 hover:text-[#9b87f5] py-2 border-b border-gray-100">
+                  {t('nav.favorites')}
+                </Link>
+                <Link to="/notifications" className="text-gray-600 hover:text-[#9b87f5] py-2">
+                  {t('nav.notifications')}
+                </Link>
+              </>
+            )}
+            <div className="py-2">
+              <UserProfileDropdown />
+            </div>
           </nav>
         </div>
       )}

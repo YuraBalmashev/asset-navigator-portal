@@ -16,7 +16,9 @@
   },
   "home": {
     "title": "Find Your Perfect Asset",
+    "title_guest": "Welcome!",
     "subtitle": "Browse through a wide selection of properties, vehicles, and ready-made businesses from Sberbank's marketplace.",
+    "subtitle_guest": "Smart search will help you quickly find the right asset, and registration will make your search personalized.",
     "search": {
       "placeholder": "What are you looking for? E.g., 'Apartment in Moscow with 2 bedrooms'",
       "button": "Search"

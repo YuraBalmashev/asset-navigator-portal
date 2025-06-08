@@ -33,10 +33,10 @@ const GuestView = () => {
   return (
     <div className="container mx-auto px-4 py-12">
       <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">
-        {t('home.title')}
+        {t('home.title_guest')}
       </h1>
       <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-        {t('home.subtitle')}
+        {t('home.subtitle_guest')}
       </p>
       
       <SearchBar 

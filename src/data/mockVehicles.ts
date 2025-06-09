@@ -20,7 +20,7 @@ export const mockVehicles = [
     type: "vehicle" as const,
     title: "Mercedes-Benz E-Class",
     price: 5200000,
-    imageUrl: "https://images.unsplash.com/photo-1549399542-7e8559342222?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     location: "St. Petersburg",
     specs: [
       { label: "Год", value: "2020" },
@@ -35,7 +35,7 @@ export const mockVehicles = [
     type: "vehicle" as const,
     title: "Mercedes-Benz Sprinter",
     price: 4500000,
-    imageUrl: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
     location: "Москва",
     specs: [
       { label: "Год", value: "2023" },

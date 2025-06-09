@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -239,6 +238,7 @@ const BusinessDetail = () => {
                     images={businessImages}
                     onImagesChange={setBusinessImages}
                     maxImages={25}
+                    storageKey={`business-images-${business.id}`}
                   />
                 </TabsContent>
                 

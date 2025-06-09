@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
-import { Heart, MapPin } from "lucide-react";
+import { Heart, MapPin, Image } from "lucide-react";
 
 interface AssetCardProps {
   id: string;
@@ -31,8 +31,25 @@ const AssetCard = ({
   onToggleFavorite,
 }: AssetCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   const detailsPath = `/${type}/${id}`;
+
+  // Fallback images for different asset types
+  const getFallbackImage = (assetType: string) => {
+    switch (assetType) {
+      case 'property':
+        return 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80';
+      case 'vehicle':
+        return 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80';
+      case 'business':
+        return 'https://images.unsplash.com/photo-1541746972996-4e0b0f43e02a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80';
+      default:
+        return 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80';
+    }
+  };
+
+  const displayImage = (!imageUrl || imageError) ? getFallbackImage(type) : imageUrl;
 
   const handleFavoriteClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -43,6 +60,11 @@ const AssetCard = ({
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
 
+  const handleImageError = () => {
+    console.log(`Image failed to load for ${type} ${id}:`, imageUrl);
+    setImageError(true);
+  };
+
   return (
     <Link to={detailsPath}>
       <Card 
@@ -51,12 +73,26 @@ const AssetCard = ({
         onMouseLeave={handleMouseLeave}
       >
         <div className="relative">
-          <div 
-            className="h-48 bg-cover bg-center transition-transform duration-500 ease-in-out"
-            style={{ 
-              backgroundImage: `url(${imageUrl})`,
-              transform: isHovered ? 'scale(1.05)' : 'scale(1)'
-            }} 
+          {!imageUrl || imageError ? (
+            <div className="h-48 bg-gray-200 flex items-center justify-center transition-transform duration-500 ease-in-out"
+                 style={{ transform: isHovered ? 'scale(1.05)' : 'scale(1)' }}>
+              <Image size={48} className="text-gray-400" />
+            </div>
+          ) : (
+            <div 
+              className="h-48 bg-cover bg-center transition-transform duration-500 ease-in-out"
+              style={{ 
+                backgroundImage: `url(${displayImage})`,
+                transform: isHovered ? 'scale(1.05)' : 'scale(1)'
+              }} 
+            />
+          )}
+          <img 
+            src={displayImage}
+            alt={title}
+            className="hidden"
+            onError={handleImageError}
+            onLoad={() => setImageError(false)}
           />
           <button 
             className={`absolute top-3 right-3 p-1.5 rounded-full shadow-md transition-all ${

@@ -46,7 +46,7 @@ export const mockBusinesses = [
     isFavorite: false,
   },
   {
-    id: "biz1_old",
+    id: "biz4",
     type: "business" as const,
     title: "Hotel Complex by the Sea",
     price: 1200000000,

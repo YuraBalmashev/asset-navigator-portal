@@ -149,7 +149,7 @@ const Index = () => {
     );
   }
 
-  // Authorized user view (existing functionality)
+  // Authorized user view (John Smith) - simplified without CategoryCards and FeaturedAssets
   return (
     <MainLayout>
       <div className="bg-gradient-to-b from-[#F1FAF1] to-white py-16">
@@ -182,19 +182,6 @@ const Index = () => {
               </div>
             </div>
           )}
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {categories.map((category) => (
-              <CategoryCard
-                key={category.title}
-                title={category.title}
-                description={category.description}
-                icon={category.icon}
-                imageUrl={category.imageUrl}
-                link={category.link}
-              />
-            ))}
-          </div>
         </div>
       </div>
       
@@ -202,8 +189,6 @@ const Index = () => {
         <RecommendedBusinessAssets assets={businessAssets} />
         
         <AdvertisingWidget className="mb-12" />
-        
-        <FeaturedAssets />
       </div>
     </MainLayout>
   );

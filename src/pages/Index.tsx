@@ -1,4 +1,3 @@
-
 import { Home, Car, Briefcase } from "lucide-react";
 import MainLayout from "@/components/layouts/MainLayout";
 import SearchBar from "@/components/SearchBar";
@@ -18,6 +17,7 @@ const Index = () => {
   const { currentUser } = useUser();
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [showSearchResults, setShowSearchResults] = useState(false);
+  const [showNoResults, setShowNoResults] = useState(false);
 
   const categories = [
     {
@@ -44,6 +44,21 @@ const Index = () => {
   ];
 
   const businessAssets = [
+    {
+      id: "prop1",
+      type: "property" as const,
+      title: "Двухкомнатная квартира",
+      price: 15000000,
+      imageUrl: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      location: "Москва",
+      specs: [
+        { label: "Площадь", value: "65 м²" },
+        { label: "Комнаты", value: "2" },
+        { label: "Этаж", value: "5/12" },
+        { label: "Год", value: "2020" },
+      ],
+      isFavorite: false,
+    },
     {
       id: "biz1",
       type: "business" as const,
@@ -109,15 +124,41 @@ const Index = () => {
   const handleSearch = (query: string) => {
     const searchQuery = query.toLowerCase();
     
-    if (searchQuery.includes("готовый бизнес") || searchQuery.includes("бизнес") || searchQuery.includes("find me a ready business")) {
-      setSearchResults(businessAssets.filter(asset => asset.type === "business"));
+    // Property keywords
+    const propertyKeywords = ["недвижимость", "купить квартиру", "квартира", "дом", "жилье", "апартаменты", "property", "apartment", "house", "real estate"];
+    // Vehicle keywords  
+    const vehicleKeywords = ["машина", "автомобиль", "купить авто", "транспорт", "bmw", "audi", "мерседес", "mercedes", "car", "vehicle", "auto"];
+    // Business keywords
+    const businessKeywords = ["купить бизнес", "бизнес", "готовый бизнес", "ресторан", "фитнес", "магазин", "business", "restaurant", "fitness", "shop", "store"];
+    
+    let filteredResults: any[] = [];
+    
+    // Check if query matches property keywords
+    if (propertyKeywords.some(keyword => searchQuery.includes(keyword))) {
+      filteredResults = businessAssets.filter(asset => asset.type === "property");
+    }
+    // Check if query matches vehicle keywords
+    else if (vehicleKeywords.some(keyword => searchQuery.includes(keyword))) {
+      filteredResults = businessAssets.filter(asset => asset.type === "vehicle");
+    }
+    // Check if query matches business keywords
+    else if (businessKeywords.some(keyword => searchQuery.includes(keyword))) {
+      filteredResults = businessAssets.filter(asset => asset.type === "business");
+    }
+    
+    // Set results and display state
+    if (filteredResults.length > 0) {
+      setSearchResults(filteredResults);
       setShowSearchResults(true);
-    } else if (searchQuery.includes("транспорт") || searchQuery.includes("машин") || searchQuery.includes("автомобиль")) {
-      setSearchResults(businessAssets.filter(asset => asset.type === "vehicle"));
-      setShowSearchResults(true);
+      setShowNoResults(false);
+    } else if (searchQuery.trim() !== "") {
+      setSearchResults([]);
+      setShowSearchResults(false);
+      setShowNoResults(true);
     } else {
       setSearchResults([]);
       setShowSearchResults(false);
+      setShowNoResults(false);
     }
   };
 
@@ -179,6 +220,14 @@ const Index = () => {
                     onToggleFavorite={toggleFavorite}
                   />
                 ))}
+              </div>
+            </div>
+          )}
+
+          {showNoResults && (
+            <div className="mb-12 text-center">
+              <div className="bg-gray-50 rounded-lg p-8 max-w-2xl mx-auto">
+                <p className="text-gray-600 text-lg">{t('search.no_results')}</p>
               </div>
             </div>
           )}

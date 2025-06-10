@@ -1,4 +1,3 @@
-
 {
   "nav": {
     "properties": "Properties",
@@ -12,7 +11,8 @@
     "placeholder": "Search for properties, vehicles, businesses...",
     "mobile": {
       "placeholder": "Search..."
-    }
+    },
+    "no_results": "Unfortunately, we don't currently have what you're looking for in stock. But we'll notify you when a similar asset becomes available."
   },
   "home": {
     "title": "Find Your Perfect Asset",
